@@ -76,7 +76,7 @@ h3 {
   scroll-margin-top: var(--header-h);
 }
 
-/* Container central: 1360px de largura máxima, 40px de respiro lateral (20px no celular) */
+/* Container central: 1360px de conteúdo + 40px de respiro lateral (20px no celular) */
 .wrap {
   max-width: var(--container);
   margin: 0 auto;

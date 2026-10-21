@@ -22,9 +22,10 @@
 }
 
 /* ---------- Intro ---------- */
-/* Base de 480px: com 1440px de tela, "Logística" em 6vw cabe sem invadir as features */
+/* Bases 420px / 520px da referência. O mínimo automático do flex (largura do
+   nome gigante) faz a linha quebrar antes de "Logística" invadir as features. */
 .module-row__intro {
-  flex: 1 1 480px;
+  flex: 1 1 420px;
 }
 
 .module-row__label {
@@ -62,11 +63,15 @@
 
 /* ---------- Funcionalidades: 2 colunas ---------- */
 .module-row__features {
-  flex: 1 1 500px;
+  flex: 1 1 520px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-content: start;
   gap: var(--space-4) 40px;
+}
+
+.module-row__features li {
+  line-height: 1.3;
 }
 
 .module-row__feature-name {
@@ -79,7 +84,7 @@
   display: block;
   color: var(--text-dim);
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.6; /* mesma altura de linha da referência (~21px) */
 }
 
 @media (max-width: 720px) {

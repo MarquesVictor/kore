@@ -97,8 +97,10 @@
   /* Altura aproximada do header fixo — usada no scroll-margin-top das âncoras */
   --header-h: 82px;
 
-  /* Container das seções editoriais */
-  --container: 1360px;
+  /* Container das seções editoriais (largura total, com o gutter incluso).
+     A referência usa 1360px de CONTEÚDO + 40px de cada lado (sem border-box),
+     então aqui o total é 1440px. */
+  --container: 1440px;
   --gutter: 40px;
 
   /* Símbolo K — cores exatas do guia de marca */

@@ -30,10 +30,10 @@
   font-size: 15px;
 }
 
-/* Base fixa: os preços ficam alinhados em coluna entre as linhas.
+/* Largura do próprio conteúdo, como na referência.
    No celular o tamanho cai até 14vw para "R$649 /mês" caber em uma linha. */
 .plan-row__price {
-  flex: 0 1 380px;
+  flex: 0 1 auto;
   font-family: var(--font-display);
   font-weight: 800;
   font-size: clamp(48px, 14vw, 64px);
