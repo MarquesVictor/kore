@@ -13,7 +13,7 @@ const MAX_FILES = 3;
 const MAX_TOTAL_MB = 3;
 
 // Opções do campo "Módulo": os módulos do site + duas opções abertas
-const MODULE_OPTIONS = [...modules.map((module) => module.tag), 'Mais de um módulo', 'Ainda não sei'];
+const MODULE_OPTIONS = [...modules.map((module) => module.label), 'Mais de um módulo', 'Ainda não sei'];
 
 export default function ContactForm({ onCancel }) {
   const id = useId();

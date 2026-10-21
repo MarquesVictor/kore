@@ -19,38 +19,6 @@ function IconBase({ children }) {
   );
 }
 
-// Frota — caminhão
-export function TruckIcon() {
-  return (
-    <IconBase>
-      <path d="M3 7h11v8H3z" />
-      <path d="M14 10h4l3 3v2h-7z" />
-      <circle cx="7.5" cy="17.5" r="1.6" />
-      <circle cx="17.5" cy="17.5" r="1.6" />
-    </IconBase>
-  );
-}
-
-// Logística — pino de localização
-export function PinIcon() {
-  return (
-    <IconBase>
-      <path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z" />
-      <circle cx="12" cy="10" r="2.3" />
-    </IconBase>
-  );
-}
-
-// Segurança do trabalho — escudo com check
-export function ShieldIcon() {
-  return (
-    <IconBase>
-      <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
-      <path d="M9 12l2 2 4-4" />
-    </IconBase>
-  );
-}
-
 export function SunIcon() {
   return (
     <IconBase>
@@ -102,10 +70,3 @@ export function WhatsAppIcon() {
     </svg>
   );
 }
-
-// Mapa pilar → ícone, usado pelos cards de módulo e pelo painel do hero
-export const PILLAR_ICONS = {
-  frota: TruckIcon,
-  logistica: PinIcon,
-  sst: ShieldIcon,
-};

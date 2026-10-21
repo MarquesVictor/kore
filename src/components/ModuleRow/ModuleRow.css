@@ -1,0 +1,101 @@
+/* Linha de módulo: intro à esquerda, funcionalidades à direita; quebra quando não cabe. */
+
+.module-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px 64px;
+  padding: 56px 0;
+  border-top: 1px solid var(--line-active);
+}
+
+/* A cor do pilar só aparece no quadradinho e no rótulo */
+.module-row--frota {
+  --pillar: var(--pillar-frota);
+}
+
+.module-row--suprimentos {
+  --pillar: var(--pillar-suprimentos);
+}
+
+.module-row--pessoas {
+  --pillar: var(--pillar-pessoas);
+}
+
+/* ---------- Intro ---------- */
+/* Base de 480px: com 1440px de tela, "Logística" em 6vw cabe sem invadir as features */
+.module-row__intro {
+  flex: 1 1 480px;
+}
+
+.module-row__label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: var(--space-3);
+  color: var(--pillar);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.module-row__swatch {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--pillar);
+}
+
+.module-row__name {
+  font-size: clamp(48px, 6vw, 96px);
+  line-height: 0.9;
+}
+
+.module-row__tagline {
+  max-width: 380px;
+  margin-top: 20px;
+  color: var(--text-dim);
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+/* ---------- Funcionalidades: 2 colunas ---------- */
+.module-row__features {
+  flex: 1 1 500px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  gap: var(--space-4) 40px;
+}
+
+.module-row__feature-name {
+  display: block;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.module-row__feature-desc {
+  display: block;
+  color: var(--text-dim);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 720px) {
+  .module-row {
+    padding: 40px 0;
+  }
+
+  .module-row__tagline {
+    font-size: 18px;
+  }
+}
+
+/* Em telas bem estreitas as funcionalidades viram uma coluna */
+@media (max-width: 480px) {
+  .module-row__features {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+}
