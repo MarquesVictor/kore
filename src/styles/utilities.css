@@ -1,101 +1,56 @@
 /* =============================================================
    UTILITÁRIOS
-   Classes reaproveitadas por várias seções:
-   .eyebrow, .section-head, .section-alt e os botões (.btn-*).
+   Classes reaproveitadas por várias seções da direção editorial:
+   .label (rótulo mono de seção), .display (título gigante)
+   e .section-intro (título + texto lado a lado).
    ============================================================= */
 
-/* Rótulo pequeno em caixa alta acima dos títulos */
-.eyebrow {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 20px;
-  background: var(--line);
-  color: var(--heading);
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 10px;
-  letter-spacing: 0.25em;
+/* Rótulo de sistema em DM Mono: "(01) MÓDULOS" */
+.label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-}
-
-/* Cabeçalho padrão das seções: eyebrow + h2 + parágrafo */
-.section-head {
-  max-width: 600px;
-  margin-bottom: 48px;
-}
-
-.section-head h2 {
-  margin-top: 14px;
-  font-size: clamp(28px, 4vw, 38px);
-}
-
-.section-head p:not(.eyebrow) {
-  margin-top: 14px;
-  color: var(--text-dim);
-  font-size: 15px;
-}
-
-/* Faixa com fundo diferenciado (Módulos e Planos) */
-.section-alt {
-  background: var(--surface-2);
-}
-
-/* ---------- Botões ---------- */
-.btn {
-  display: inline-block;
-  padding: 11px 20px;
-  border: 1px solid var(--line-active);
-  border-radius: 6px;
-  font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: 13px;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-/* Gradiente de marca encurtado (claro → primária) para manter o texto escuro com contraste AA */
-.btn-primary {
-  border: none;
-  background: linear-gradient(135deg, var(--grad-start), var(--primary));
-  color: var(--on-primary);
-  font-weight: 600;
-  box-shadow: var(--shadow-sm);
-}
-
-.btn-primary:hover {
-  filter: brightness(1.08);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-secondary {
-  border-color: var(--line-active);
-  background: var(--surface);
   color: var(--heading);
 }
 
-.btn-secondary:hover {
-  background: var(--surface-2);
+/* Título de seção gigante (Syne 800) */
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(44px, 6.4vw, 104px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: var(--text);
 }
 
-.btn-ghost {
-  border-color: transparent;
+/* Linha secundária do título, em tom apagado ("Uma plataforma.") */
+.display__dim {
   color: var(--text-dim);
 }
 
-.btn-ghost:hover {
-  color: var(--heading);
+/* Cabeçalho de seção: título à esquerda, rótulo + texto à direita */
+.section-intro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-4) 80px;
+  margin-bottom: 96px;
 }
 
-/* Botão sobre as faixas violeta (CTA e plano em destaque) */
-.btn-on-band {
-  border: none;
-  background: var(--surface);
-  color: var(--heading);
-  font-weight: 600;
+.section-intro .display {
+  flex: 1 1 560px;
 }
 
-.btn-on-band:hover {
-  filter: brightness(1.05);
-  box-shadow: var(--shadow-md);
+.section-intro__text {
+  flex: 1 1 300px;
+  max-width: 380px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-dim);
+}
+
+.section-intro__text .label {
+  display: block;
+  margin-bottom: 12px;
 }

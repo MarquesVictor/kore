@@ -6,6 +6,7 @@
 import { useId, useState } from 'react';
 import { PRIVACY_URL, WHATSAPP_URL } from '../../config.js';
 import { modules } from '../../data/modules.js';
+import Button from '../Button/Button.jsx';
 import './ContactForm.css';
 
 const MAX_FILES = 3;
@@ -126,12 +127,10 @@ export default function ContactForm({ onCancel }) {
       )}
 
       <div className="contact-form__actions">
-        <button type="button" className="btn btn-secondary" onClick={onCancel}>
+        <Button variant="secondary" onClick={onCancel}>
           Cancelar
-        </button>
-        <button type="submit" className="btn btn-primary">
-          Enviar mensagem
-        </button>
+        </Button>
+        <Button type="submit">Enviar mensagem</Button>
       </div>
     </form>
   );

@@ -1,25 +1,26 @@
-/* Botão redondo de alternar tema (header). */
+/* Botão redondo de alternar tema (header): contorno hairline, sem fundo. */
 
 .theme-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border: 1px solid var(--line-active);
   border-radius: 50%;
-  background: var(--surface);
-  color: var(--heading);
+  background: transparent;
+  color: var(--text-dim);
   cursor: pointer;
-  transition: border-color 0.15s, background 0.15s;
+  transition: border-color 0.15s, color 0.15s;
 }
 
 .theme-toggle:hover {
-  background: var(--surface-2);
+  border-color: var(--primary-light);
+  color: var(--text);
 }
 
 .theme-toggle svg {
-  width: 17px;
-  height: 17px;
+  width: 16px;
+  height: 16px;
 }

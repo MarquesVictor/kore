@@ -60,17 +60,15 @@ main:focus {
   outline: none;
 }
 
+/* Títulos: Syne 800 com entrelinha apertada (cada seção define o tamanho) */
 h1,
 h2,
 h3 {
   font-family: var(--font-display);
   font-weight: 800;
-  line-height: 1.05;
-  color: var(--heading);
-}
-
-section {
-  padding: 88px 0;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: var(--text);
 }
 
 /* Âncoras não ficam escondidas atrás do header fixo */
@@ -78,11 +76,11 @@ section {
   scroll-margin-top: var(--header-h);
 }
 
-/* Container central com as margens laterais da marca (48px / 24px) */
+/* Container central: 1360px de largura máxima, 40px de respiro lateral (20px no celular) */
 .wrap {
-  max-width: 1180px;
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 0 48px;
+  padding: 0 var(--gutter);
 }
 
 /* Link "pular para o conteúdo": invisível até receber foco pelo teclado */
@@ -93,25 +91,15 @@ section {
   z-index: 100;
   padding: 10px 16px;
   border-radius: 6px;
+  border: 1px solid var(--line-active);
   background: var(--surface);
-  color: var(--heading);
+  color: var(--primary-light);
   font-weight: 600;
-  box-shadow: var(--shadow-md);
   transform: translateY(-150%);
 }
 
 .skip-link:focus {
   transform: none;
-}
-
-@media (max-width: 720px) {
-  .wrap {
-    padding: 0 24px;
-  }
-
-  section {
-    padding: 56px 0;
-  }
 }
 
 /* Pulsar dos pontinhos "ao vivo" (painel do hero e ticker) */

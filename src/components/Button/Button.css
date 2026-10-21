@@ -1,0 +1,68 @@
+/* Botão em pílula: 3 variantes × 3 tamanhos. */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: filter 0.15s, background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* ---------- Tamanhos ---------- */
+.button--sm {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+.button--md {
+  padding: 12px 22px;
+  font-size: 14px;
+}
+
+.button--lg {
+  padding: 16px 30px;
+  font-size: 15px;
+}
+
+/* ---------- Variantes ---------- */
+.button--primary {
+  background: linear-gradient(135deg, var(--grad-start), var(--primary) 55%, var(--primary-dark));
+  color: var(--on-primary);
+  font-weight: 600;
+}
+
+.button--primary:hover {
+  filter: brightness(1.1);
+}
+
+.button--secondary {
+  border-color: var(--line-active);
+  background: transparent;
+  color: var(--text);
+}
+
+.button--secondary:hover {
+  border-color: var(--primary-light);
+}
+
+.button--ghost {
+  background: var(--primary-soft);
+  color: var(--primary-light);
+}
+
+.button--ghost:hover {
+  color: var(--text);
+}

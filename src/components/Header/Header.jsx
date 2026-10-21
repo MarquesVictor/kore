@@ -1,8 +1,9 @@
-// Header fixo: logo, links de navegação, toggle de tema, CTAs e menu mobile.
-// Abaixo de 860px os links somem e aparece o botão de menu, que abre um painel.
+// Header fixo: logo, links numerados em DM Mono, toggle de tema, CTAs e menu mobile.
+// Abaixo de 960px os links somem e aparece o botão de menu, que abre um painel.
 // O painel fecha ao clicar num link, ao apertar Esc ou ao alargar a tela.
 import { useEffect, useRef, useState } from 'react';
 import { APP_URL, LOGIN_URL } from '../../config.js';
+import Button from '../Button/Button.jsx';
 import Logo from '../Logo/Logo.jsx';
 import ThemeToggle from '../ThemeToggle/ThemeToggle.jsx';
 import { CloseIcon, MenuIcon } from '../icons/Icons.jsx';
@@ -10,10 +11,11 @@ import './Header.css';
 
 // Com "/" na frente, os links também funcionam a partir das páginas de Privacidade e Termos.
 // Na home, o navegador só rola até a âncora (não recarrega a página).
+// "num" é o mesmo número do rótulo da seção, ex.: (01) Módulos.
 const NAV_LINKS = [
-  { href: '/#modulos', label: 'Módulos' },
-  { href: '/#como-funciona', label: 'Como funciona' },
-  { href: '/#planos', label: 'Planos' },
+  { href: '/#modulos', num: '01', label: 'Módulos' },
+  { href: '/#como-funciona', num: '02', label: 'Como funciona' },
+  { href: '/#planos', num: '03', label: 'Planos' },
 ];
 
 const MOBILE_MENU_ID = 'menu-mobile';
@@ -34,7 +36,7 @@ export default function Header() {
     }
 
     // Se a tela passar do breakpoint (ex.: girar o tablet), o painel não faz mais sentido
-    const desktop = window.matchMedia('(min-width: 861px)');
+    const desktop = window.matchMedia('(min-width: 961px)');
     function handleResize(event) {
       if (event.matches) setMenuOpen(false);
     }
@@ -60,7 +62,9 @@ export default function Header() {
           <ul className="header__links">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <a href={link.href}>{link.label}</a>
+                <a href={link.href}>
+                  ({link.num}) {link.label}
+                </a>
               </li>
             ))}
           </ul>
@@ -68,12 +72,12 @@ export default function Header() {
 
         <div className="header__actions">
           <ThemeToggle />
-          <a href={LOGIN_URL} className="btn btn-ghost header__cta">
+          <Button variant="ghost" size="sm" href={LOGIN_URL} className="header__cta">
             Entrar
-          </a>
-          <a href={APP_URL} className="btn btn-primary header__cta">
+          </Button>
+          <Button size="sm" href={APP_URL} className="header__cta">
             Começar agora
-          </a>
+          </Button>
           <button
             ref={toggleRef}
             type="button"
@@ -94,19 +98,19 @@ export default function Header() {
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <a href={link.href} onClick={closeMenu}>
-                {link.label}
+                ({link.num}) {link.label}
               </a>
             </li>
           ))}
         </ul>
         {/* Em telas muito estreitas os CTAs saem da barra e aparecem aqui */}
         <div className="header__mobile-cta">
-          <a href={LOGIN_URL} className="btn btn-secondary" onClick={closeMenu}>
+          <Button variant="secondary" href={LOGIN_URL} onClick={closeMenu}>
             Entrar
-          </a>
-          <a href={APP_URL} className="btn btn-primary" onClick={closeMenu}>
+          </Button>
+          <Button href={APP_URL} onClick={closeMenu}>
             Começar agora
-          </a>
+          </Button>
         </div>
       </nav>
     </header>
