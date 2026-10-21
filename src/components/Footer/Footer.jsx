@@ -1,4 +1,4 @@
-// Rodapé: logo, links rápidos, canais de contato e copyright.
+// Rodapé em uma linha: logo pequena, links, canais de contato e copyright em mono.
 import { PRIVACY_URL, TERMS_URL } from '../../config.js';
 import ContactLinks from '../ContactLinks/ContactLinks.jsx';
 import Logo from '../Logo/Logo.jsx';
@@ -31,7 +31,7 @@ export default function Footer() {
 
         <ContactLinks />
 
-        <p className="footer__copy">© {year} KORE. Todos os direitos reservados.</p>
+        <p className="footer__copy">© {year} KORE</p>
       </div>
     </footer>
   );

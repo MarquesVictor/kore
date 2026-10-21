@@ -1,71 +1,53 @@
-/* Canais de contato: botão redondo do WhatsApp + link de e-mail com ícone. */
+/* Canais de contato (rodapé): WhatsApp em círculo hairline + botão "E-mail".
+   Discretos, sem cor de fundo: o verde do WhatsApp só aparece no hover. */
 
 .contact-links {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--space-3);
 }
 
-/* WhatsApp: círculo verde com o glifo branco (padrão reconhecível da marca) */
 .contact-links__whatsapp {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line-active);
   border-radius: 50%;
-  background: var(--whatsapp);
-  color: var(--on-band);
-  transition: filter 0.15s, box-shadow 0.15s;
+  color: var(--text-dim);
+  transition: color 0.15s, border-color 0.15s;
 }
 
 .contact-links__whatsapp:hover {
-  filter: brightness(1.05);
-  box-shadow: var(--shadow-md);
+  border-color: var(--whatsapp);
+  color: var(--whatsapp);
 }
 
 .contact-links__whatsapp svg {
-  width: 22px;
-  height: 22px;
+  width: 16px;
+  height: 16px;
 }
 
 /* É um <button> (abre o formulário), com visual de link */
 .contact-links__email {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-2);
   padding: 0;
   border: none;
   background: none;
   cursor: pointer;
   color: var(--text-dim);
   font-size: 13px;
-  font-weight: 500;
   transition: color 0.15s;
 }
 
 .contact-links__email:hover {
-  color: var(--heading);
+  color: var(--text);
 }
 
 .contact-links__email svg {
-  width: 18px;
-  height: 18px;
-}
-
-/* ---------- Sobre a faixa violeta ---------- */
-.contact-links--on-band {
-  justify-content: center;
-}
-
-.contact-links--on-band .contact-links__email {
-  color: var(--on-band);
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.contact-links--on-band .contact-links__email:hover {
-  color: var(--on-band);
+  width: 16px;
+  height: 16px;
 }

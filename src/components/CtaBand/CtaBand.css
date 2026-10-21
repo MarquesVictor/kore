@@ -1,39 +1,45 @@
-/* Faixa de CTA: fundo violeta escuro, texto centralizado. */
+/* CTA final: sem faixa colorida, só tipografia sobre o fundo da página. */
 
 .cta-band {
-  background: var(--primary-dark);
-  text-align: center;
+  border-top: 1px solid var(--line);
 }
 
+.cta-band__inner {
+  padding-top: 160px;
+  padding-bottom: 140px;
+}
+
+/* Mínimo de 42px: "operação" (~7.9em em Syne 800) cabe em 390px */
 .cta-band__title {
-  max-width: 680px;
-  margin: 0 auto 18px;
-  color: var(--on-band);
-  font-size: clamp(30px, 4.5vw, 44px);
+  margin-bottom: 56px;
+  font-size: clamp(42px, 8.4vw, 136px);
+  line-height: 0.88;
+  letter-spacing: -0.035em;
 }
 
-.cta-band__text {
-  margin-bottom: 28px;
-  color: var(--on-band);
+.cta-band__accent {
+  color: var(--primary-light);
 }
 
-.cta-band__button {
-  padding: 16px 32px;
-  font-size: 15px;
-}
-
-.cta-band__contact {
+.cta-band__actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  gap: 12px 16px;
-  margin-top: 28px;
-  color: var(--on-band);
-  font-size: 14px;
+  gap: var(--space-3) 32px;
 }
 
-/* O contorno de foco padrão (violeta) sumiria sobre o fundo violeta */
-.cta-band :focus-visible {
-  outline-color: var(--on-band);
+.cta-band__text {
+  color: var(--text-dim);
+  font-size: 15px;
+}
+
+@media (max-width: 720px) {
+  .cta-band__inner {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+
+  .cta-band__title {
+    margin-bottom: 40px;
+  }
 }

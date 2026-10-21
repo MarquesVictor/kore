@@ -1,14 +1,13 @@
 // Os dois canais de contato: ícone do WhatsApp e botão "E-mail" (abre o formulário).
 // O número do WhatsApp vem do .env (VITE_CONTACT_WPP, ver src/config.js).
-// variant="on-band" ajusta as cores para fundo violeta (faixa de CTA).
 import { WHATSAPP_URL } from '../../config.js';
 import { openContactForm } from '../ContactDialog/ContactDialog.jsx';
 import { MailIcon, WhatsAppIcon } from '../icons/Icons.jsx';
 import './ContactLinks.css';
 
-export default function ContactLinks({ variant = 'default' }) {
+export default function ContactLinks() {
   return (
-    <ul className={`contact-links contact-links--${variant}`}>
+    <ul className="contact-links">
       <li>
         {/* Abre em nova aba: no computador, wa.me leva ao WhatsApp Web */}
         <a

@@ -5,11 +5,10 @@
   max-height: calc(100dvh - 32px);
   margin: auto;
   padding: 0;
-  border: 1px solid var(--line);
-  border-radius: 16px;
+  border: 1px solid var(--line-active);
+  border-radius: var(--radius-lg);
   background: var(--surface);
   color: var(--text);
-  box-shadow: var(--shadow-md);
 }
 
 .contact-dialog::backdrop {
@@ -35,7 +34,7 @@ html:has(.contact-dialog[open]) {
 }
 
 .contact-dialog__title {
-  font-size: 26px;
+  font-size: 32px;
 }
 
 .contact-dialog__close {
@@ -47,13 +46,14 @@ html:has(.contact-dialog[open]) {
   height: 36px;
   border: 1px solid var(--line-active);
   border-radius: 50%;
-  background: var(--surface);
-  color: var(--heading);
+  background: transparent;
+  color: var(--text-dim);
   cursor: pointer;
 }
 
 .contact-dialog__close:hover {
-  background: var(--surface-2);
+  border-color: var(--primary-light);
+  color: var(--text);
 }
 
 .contact-dialog__close svg {
