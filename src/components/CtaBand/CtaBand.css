@@ -33,6 +33,12 @@
   font-size: 15px;
 }
 
+/* Estado inicial da entrada (hooks no CtaBand.jsx). Só com JS. */
+.js .cta-band__title,
+.js .cta-band__actions > * {
+  opacity: 0;
+}
+
 @media (max-width: 720px) {
   .cta-band__inner {
     padding-top: 96px;
