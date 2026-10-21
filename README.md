@@ -5,7 +5,7 @@ Dependências: `react`, `react-dom` e, só na home, `gsap` + `@gsap/react` para 
 
 ## Requisitos
 
-- Node.js 18 ou superior
+- Node.js 20.19 ou superior (exigido pelas ferramentas de lint e teste)
 - npm
 
 ## Comandos
@@ -15,7 +15,29 @@ npm install       # instala as dependências
 npm run dev       # servidor local em http://localhost:5173
 npm run build     # gera o build de produção em dist/ (com as páginas pré-renderizadas)
 npm run preview   # serve o build de dist/ localmente para conferir
+npm run lint      # ESLint (JS/JSX) + Stylelint (CSS)
+npm test          # testes rápidos (Vitest): dados, pré-renderização e hydration
+npm run test:e2e  # testes no navegador (Playwright) contra o build de produção
 ```
+
+## Lint e testes
+
+**Lint** (`eslint.config.js`, `stylelint.config.js`): além das regras recomendadas, as regras
+do projeto viram erro: sem `style={{}}`, GSAP só via `src/animations/gsap.js`, nenhuma outra
+biblioteca de animação e nenhuma cor literal fora de `src/styles/tokens.css`.
+
+**`npm test`** (`tests/*.test.*`, ~1s):
+
+- `data.test.js`: formato dos dados que componentes e animações assumem (ex.: preço é número);
+- `prerender.test.jsx`: renderiza as páginas em Node, como no build. Quebra se algum componente
+  usar `window`/`document` durante o render;
+- `hydration.test.jsx`: o React assume o HTML pré-renderizado sem divergência, inclusive no tema claro.
+
+**`npm run test:e2e`** (`tests/e2e/`, ~20s): refaz o build, sobe um preview na porta 4183 e testa
+no Chromium a abertura do hero (menos de 2s, sem mudar a altura do título), a página inteira em
+1440px e 390px (tudo aparece, nada estoura a largura), "reduzir movimento", JS desligado, a rede
+de segurança da classe `.js`, âncoras, tema, fontes locais e as páginas legais sem GSAP.
+Na primeira vez numa máquina nova, instale o navegador com `npx playwright install chromium`.
 
 ## Configuração (.env)
 

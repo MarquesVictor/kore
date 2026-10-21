@@ -80,9 +80,29 @@ export default [
     rules: { 'no-unused-vars': ['error', { caughtErrors: 'none' }] },
   },
 
-  // ---------- Node: configs, build e testes ----------
+  // ---------- Node: configs e build ----------
   {
-    files: ['*.config.js', 'scripts/**/*.js', 'tests/**/*.{js,jsx}'],
+    files: ['*.config.js', 'scripts/**/*.js'],
     languageOptions: { ecmaVersion: 'latest', sourceType: 'module', globals: globals.node },
+  },
+
+  // ---------- Testes ----------
+  // Rodam em Node, mas parte do código roda no navegador (page.evaluate do Playwright)
+  // ou no jsdom (hydration): por isso os dois conjuntos de globais, e JSX.
+  {
+    files: ['tests/**/*.{js,jsx}'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: { ...globals.node, ...globals.browser },
+      parserOptions: { ecmaFeatures: { jsx: true } },
+    },
+    settings: { react: { version: 'detect' } },
+    plugins: { react },
+    rules: {
+      ...react.configs.recommended.rules,
+      ...react.configs['jsx-runtime'].rules,
+      'react/prop-types': 'off',
+    },
   },
 ];

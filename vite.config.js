@@ -47,6 +47,14 @@ export default defineConfig(({ command, mode }) => {
     ssr: {
       noExternal: ['gsap', '@gsap/react'],
     },
+    // Testes rápidos (`npm test`, Vitest). Os de navegador ficam em tests/e2e (Playwright).
+    // Ambiente padrão: Node, igual à pré-renderização; um arquivo pode pedir jsdom
+    // com o comentário "@vitest-environment jsdom" no topo.
+    test: {
+      include: ['tests/**/*.test.{js,jsx}'],
+      environment: 'node',
+      server: { deps: { inline: ['gsap', '@gsap/react'] } }, // mesmo motivo do ssr.noExternal
+    },
     build: {
       rollupOptions: {
         input: {
