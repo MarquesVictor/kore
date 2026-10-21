@@ -141,7 +141,8 @@
   }
 }
 
-/* Estado inicial da entrada (useRevealItems no Header.jsx). Só com JS. */
+/* Estado inicial da entrada na home (useRevealItems no App.jsx). Só com JS:
+   as páginas legais não têm a classe .js, então o header aparece direto. */
 .js .header__bar {
   opacity: 0;
 }

@@ -1,5 +1,7 @@
 // Página única: monta as seções na ordem da landing.
 // A navegação é por âncoras (#modulos, #como-funciona, #planos) com scroll suave.
+import { useRef } from 'react';
+import { useRevealItems } from './animations/useRevealItems.js';
 import Header from './components/Header/Header.jsx';
 import Hero from './components/Hero/Hero.jsx';
 import OperationLog from './components/OperationLog/OperationLog.jsx';
@@ -11,6 +13,10 @@ import Footer from './components/Footer/Footer.jsx';
 import ContactDialog from './components/ContactDialog/ContactDialog.jsx';
 
 export default function App() {
+  // A barra do header desce 12px com fade junto com a abertura do hero
+  const headerRef = useRef(null);
+  useRevealItems(headerRef, { targets: '.header__bar', y: -12, onLoad: true });
+
   return (
     <>
       {/* Atalho de teclado para pular o header */}
@@ -18,7 +24,7 @@ export default function App() {
         Pular para o conteúdo
       </a>
 
-      <Header />
+      <Header ref={headerRef} />
 
       <main id="conteudo" tabIndex={-1}>
         <Hero />
