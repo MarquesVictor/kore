@@ -9,6 +9,10 @@ import './styles/utilities.css';
 
 import App from './App.jsx';
 
+// Avisa o CSS que o JS carregou: só então os elementos animados começam escondidos
+// (ver .js em utilities.css). Sem JS, o site aparece normal.
+document.documentElement.classList.add('js');
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />

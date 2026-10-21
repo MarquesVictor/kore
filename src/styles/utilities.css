@@ -54,3 +54,42 @@
   display: block;
   margin-bottom: 12px;
 }
+
+/* =============================================================
+   ANIMAÇÕES (lógica em src/animations/)
+   Os estados iniciais só valem com a classe .js no <html>, adicionada
+   pelo JS de entrada (main.jsx). Sem JS, tudo aparece normal.
+   ============================================================= */
+
+/* Hairline que "desenha": um ::before de 1px no topo do elemento.
+   Sem JS fica inteira (--draw: 1); com JS começa em 0 e o GSAP leva até 1.
+   A cor muda por --hairline-color. */
+.hairline {
+  position: relative;
+}
+
+.hairline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--hairline-color, var(--line-active));
+  transform: scaleX(var(--draw, 1));
+  transform-origin: left;
+}
+
+.js .hairline {
+  --draw: 0;
+}
+
+/* Máscaras do SplitText (src/animations/motion.js → riseText).
+   A entrelinha dos títulos é menor que 1, então a máscara ganha folga vertical
+   (padding) compensada por margem negativa: os acentos não são cortados e o
+   layout não muda. */
+.split-line-mask,
+.split-word-mask {
+  padding-block: 0.12em;
+  margin-block: -0.12em;
+}
