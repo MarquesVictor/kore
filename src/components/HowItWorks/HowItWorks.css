@@ -1,4 +1,5 @@
-/* Como funciona: fundo --surface, 4 passos em flex-wrap com hairline no topo. */
+/* Como funciona: fundo --surface, 4 passos em flex-wrap com hairline no topo
+   (classe .hairline, que desenha ao entrar na tela). */
 
 .how {
   background: var(--surface);
@@ -26,7 +27,6 @@
 .step {
   flex: 1 1 240px;
   padding-top: var(--space-4);
-  border-top: 1px solid var(--line-active);
 }
 
 /* Número gigante: a cor clareia do passo 1 ao 4 */
@@ -45,7 +45,7 @@
 
 /* O último passo fecha com a cor mais clara, também na hairline */
 .step:nth-child(4) {
-  border-top-color: var(--primary-light);
+  --hairline-color: var(--primary-light);
 }
 
 .step:nth-child(4) .step__num {
@@ -64,6 +64,15 @@
   color: var(--text-dim);
   font-size: 15px;
   line-height: 1.6;
+}
+
+/* Estado inicial da entrada (hooks no HowItWorks.jsx). Só com JS. */
+.js .how .label,
+.js .how__title,
+.js .step__num,
+.js .step__title,
+.js .step__text {
+  opacity: 0;
 }
 
 @media (max-width: 720px) {
