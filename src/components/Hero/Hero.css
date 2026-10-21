@@ -31,8 +31,10 @@
   letter-spacing: -0.035em;
 }
 
+/* flow-root (em vez de block) segura dentro de cada linha as margens das máscaras
+   do SplitText durante a abertura (ver .split-line-mask em utilities.css) */
 .hero__line {
-  display: block;
+  display: flow-root;
 }
 
 .hero__accent {
@@ -48,12 +50,12 @@
   margin-top: 72px;
 }
 
-/* ---------- Números ---------- */
+/* ---------- Números ----------
+   A hairline do topo vem da classe .hairline (desenha na abertura). */
 .hero__stats {
   flex: 1 1 420px;
   display: flex;
   flex-wrap: wrap;
-  border-top: 1px solid var(--line-active);
 }
 
 .hero__stat {
@@ -104,6 +106,17 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+/* ---------- Estado inicial da abertura (src/animations/useHeroIntro.js) ----------
+   Só com JS (.js no <html>); o GSAP traz cada parte de volta. */
+.js .hero__label,
+.js .hero__line,
+.js .hero__stat dt,
+.js .hero__stat dd,
+.js .hero__lead,
+.js .hero__actions > * {
+  opacity: 0;
 }
 
 @media (max-width: 720px) {

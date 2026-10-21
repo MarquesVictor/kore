@@ -1,13 +1,19 @@
 // Hero editorial: rótulo em mono, título gigante em 3 linhas e, embaixo,
 // os números de destaque (src/data/hero.js) ao lado do texto e dos CTAs.
+// A abertura animada fica em src/animations/useHeroIntro.js.
+import { useRef } from 'react';
 import { APP_URL } from '../../config.js';
+import { useHeroIntro } from '../../animations/useHeroIntro.js';
 import { heroStats } from '../../data/hero.js';
 import Button from '../Button/Button.jsx';
 import './Hero.css';
 
 export default function Hero() {
+  const heroRef = useRef(null);
+  useHeroIntro(heroRef);
+
   return (
-    <section className="hero" id="inicio" aria-labelledby="hero-title">
+    <section ref={heroRef} className="hero" id="inicio" aria-labelledby="hero-title">
       <div className="wrap">
         <p className="hero__label">
           <span className="hero__label-main">Plataforma de gestão operacional</span>
@@ -22,11 +28,15 @@ export default function Hero() {
         </h1>
 
         <div className="hero__bottom">
-          <dl className="hero__stats">
+          <dl className="hero__stats hairline">
             {heroStats.map((stat) => (
               <div key={stat.label} className="hero__stat">
                 <dt>{stat.label}</dt>
-                <dd>{stat.value}</dd>
+                {/* Só o número conta; o sufixo fica fixo */}
+                <dd>
+                  <span className="hero__count">{stat.value}</span>
+                  {stat.suffix}
+                </dd>
               </div>
             ))}
           </dl>

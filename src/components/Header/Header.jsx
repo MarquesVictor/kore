@@ -1,8 +1,10 @@
 // Header fixo: logo, links numerados em DM Mono, toggle de tema, CTAs e menu mobile.
 // Abaixo de 960px os links somem e aparece o botão de menu, que abre um painel.
 // O painel fecha ao clicar num link, ao apertar Esc ou ao alargar a tela.
+// Na abertura a barra desce 12px com fade, junto com o hero.
 import { useEffect, useRef, useState } from 'react';
 import { APP_URL, LOGIN_URL } from '../../config.js';
+import { useRevealItems } from '../../animations/useRevealItems.js';
 import Button from '../Button/Button.jsx';
 import Logo from '../Logo/Logo.jsx';
 import ThemeToggle from '../ThemeToggle/ThemeToggle.jsx';
@@ -23,6 +25,8 @@ const MOBILE_MENU_ID = 'menu-mobile';
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleRef = useRef(null);
+  const headerRef = useRef(null);
+  useRevealItems(headerRef, { targets: '.header__bar', y: -12, onLoad: true });
 
   // Listeners só existem enquanto o menu está aberto
   useEffect(() => {
@@ -52,7 +56,7 @@ export default function Header() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="header">
+    <header ref={headerRef} className="header">
       <div className="header__bar">
         <a href="/#inicio" className="header__brand" aria-label="KORE — voltar ao início">
           <Logo />

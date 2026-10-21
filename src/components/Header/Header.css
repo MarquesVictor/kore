@@ -140,3 +140,8 @@
     display: flex;
   }
 }
+
+/* Estado inicial da entrada (useRevealItems no Header.jsx). Só com JS. */
+.js .header__bar {
+  opacity: 0;
+}

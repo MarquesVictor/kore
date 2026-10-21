@@ -87,9 +87,17 @@
 /* Máscaras do SplitText (src/animations/motion.js → riseText).
    A entrelinha dos títulos é menor que 1, então a máscara ganha folga vertical
    (padding) compensada por margem negativa: os acentos não são cortados e o
-   layout não muda. */
+   layout não muda.
+   Margem negativa encostada em outra negativa colapsa (vale a menor, não a soma):
+   por isso, entre duas linhas, a de baixo desconta as duas folgas. Se o elemento
+   dividido tiver um irmão que também é dividido, ele precisa de display: flow-root
+   (ver .hero__line). */
 .split-line-mask,
 .split-word-mask {
   padding-block: 0.12em;
   margin-block: -0.12em;
+}
+
+.split-line-mask + .split-line-mask {
+  margin-top: -0.24em;
 }
