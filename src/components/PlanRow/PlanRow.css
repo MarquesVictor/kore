@@ -30,11 +30,13 @@
   font-size: 15px;
 }
 
+/* Base fixa: os preços ficam alinhados em coluna entre as linhas.
+   No celular o tamanho cai até 14vw para "R$649 /mês" caber em uma linha. */
 .plan-row__price {
-  flex: 0 1 auto;
+  flex: 0 1 380px;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 64px;
+  font-size: clamp(48px, 14vw, 64px);
   line-height: 1;
   letter-spacing: -0.02em;
 }
@@ -56,8 +58,9 @@
 
 /* ---------- Plano em destaque ----------
    O fundo avança um pouco além do container (até 32px, nunca mais que o gutter),
-   mantendo o texto alinhado com as outras linhas. */
-.plan-row--featured {
+   mantendo o texto alinhado com as outras linhas.
+   Seletor duplo para vencer o padding do media query abaixo. */
+.plan-row.plan-row--featured {
   --bleed: min(32px, var(--gutter));
   margin: 0 calc(-1 * var(--bleed));
   padding-left: var(--bleed);

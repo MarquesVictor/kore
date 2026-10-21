@@ -40,6 +40,7 @@
   cursor: pointer;
   color: var(--text-dim);
   font-size: 13px;
+  line-height: 1;
   transition: color 0.15s;
 }
 
