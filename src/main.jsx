@@ -1,7 +1,8 @@
 // Ponto de entrada: carrega os estilos globais (na ordem certa) e monta o App
 // (ver src/mount.jsx: hidrata o HTML pré-renderizado do build).
 
-// Ordem importa: tokens (variáveis) → base (reset/tipografia) → utilitários
+// Ordem importa: fontes → tokens (variáveis) → base (reset/tipografia) → utilitários
+import './styles/fonts.css';
 import './styles/tokens.css';
 import './styles/base.css';
 import './styles/utilities.css';

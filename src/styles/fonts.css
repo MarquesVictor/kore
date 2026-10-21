@@ -1,0 +1,40 @@
+/* =============================================================
+   FONTES (hospedadas no próprio site, em public/fonts/)
+   Só o subconjunto latin: cobre o português inteiro (á, ç, ã, õ…).
+   Syne e DM Sans são fontes variáveis: um arquivo serve todos os pesos.
+   As três estão na licença SIL OFL 1.1 (public/fonts/OFL-*.txt).
+   Os arquivos críticos têm <link rel="preload"> no <head> de cada HTML:
+   se mudar um nome aqui, mude lá também.
+   ============================================================= */
+
+@font-face {
+  font-family: 'Syne';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/fonts/syne-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 100 1000;
+  font-display: swap;
+  src: url('/fonts/dm-sans-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/dm-mono-400-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/dm-mono-500-latin.woff2') format('woff2');
+}

@@ -36,13 +36,11 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <!-- Fontes da marca: Syne (títulos/wordmark), DM Sans (corpo), DM Mono (dados) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fontes da marca, hospedadas em public/fonts/ (@font-face em src/styles/fonts.css).
+         Preload das usadas na primeira tela: Syne (títulos), DM Sans (texto), DM Mono (rótulos). -->
+    <link rel="preload" href="/fonts/syne-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/dm-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Aplica o tema salvo antes do React carregar, evitando o "piscar" do tema errado.
          Fica em public/ e é carregado de forma síncrona de propósito. -->

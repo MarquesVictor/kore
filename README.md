@@ -131,6 +131,8 @@ O build é um site estático (pasta `dist/`).
 
 ```
 public/            arquivos servidos como estão (favicon, og-image, apple-touch-icon, theme-init.js)
+public/fonts/      Syne, DM Sans e DM Mono em woff2 (subconjunto latin) + licenças OFL;
+                   o @font-face fica em src/styles/fonts.css e o preload no <head> de cada HTML
 privacidade/       HTML da página /privacidade/
 termos/            HTML da página /termos/
 src/main.jsx       ponto de entrada da home: importa os estilos globais e monta o App

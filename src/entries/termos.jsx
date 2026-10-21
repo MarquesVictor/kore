@@ -1,4 +1,5 @@
 // Ponto de entrada da página /termos/ (termos/index.html).
+import '../styles/fonts.css';
 import '../styles/tokens.css';
 import '../styles/base.css';
 import '../styles/utilities.css';
