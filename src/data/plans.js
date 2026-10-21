@@ -1,5 +1,7 @@
 // Os 3 planos da seção "Planos".
-// - featured: true destaca o card com o fundo violeta (use em apenas um plano)
+// - featured: true destaca a linha (fundo --surface-2, preço violeta e botão primário).
+//   Use em apenas um plano.
+// - items: exibidos numa linha, separados por " · "
 // O link do botão "Começar agora" vem de VITE_APP_URL (ver src/config.js).
 
 export const plans = [

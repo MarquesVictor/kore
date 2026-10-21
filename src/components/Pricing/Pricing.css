@@ -1,21 +1,27 @@
-/* Grade dos planos: 3 colunas, 1 coluna abaixo de 900px. */
+/* Seção de planos: linhas de tabela entre hairlines + aviso de valores. */
 
-.pricing__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+.pricing {
+  padding: 160px 0 120px;
+}
+
+.pricing__intro {
+  margin-bottom: 64px;
+}
+
+.pricing__list {
+  border-top: 1px solid var(--line-active);
 }
 
 /* Aviso sem opacidade reduzida, para manter contraste AA */
 .pricing__note {
-  margin-top: 20px;
+  margin-top: var(--space-4);
   color: var(--text-dim);
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
 }
 
-@media (max-width: 900px) {
-  .pricing__grid {
-    grid-template-columns: 1fr;
+@media (max-width: 720px) {
+  .pricing {
+    padding: 96px 0 72px;
   }
 }
