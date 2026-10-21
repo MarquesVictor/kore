@@ -1,15 +1,15 @@
-// Seção "Como funciona": os 4 passos (dados em src/data/steps.js).
+// Seção "Como funciona": título grande e os 4 passos com número gigante (dados em src/data/steps.js).
 import { steps } from '../../data/steps.js';
 import './HowItWorks.css';
 
 export default function HowItWorks() {
   return (
-    <section id="como-funciona" aria-labelledby="como-funciona-title">
-      <div className="wrap">
-        <div className="section-head">
-          <p className="eyebrow">Como funciona</p>
-          <h2 id="como-funciona-title">Comece sem falar com ninguém.</h2>
-        </div>
+    <section className="how" id="como-funciona" aria-labelledby="como-funciona-title">
+      <div className="wrap how__inner">
+        <p className="label">(02) Como funciona</p>
+        <h2 id="como-funciona-title" className="how__title">
+          Comece sem falar com ninguém.
+        </h2>
 
         <ol className="steps">
           {steps.map((step) => (

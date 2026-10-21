@@ -1,47 +1,78 @@
-/* Passos: 4 colunas → 2 (≤900px) → 1 (≤560px). */
+/* Como funciona: fundo --surface, 4 passos em flex-wrap com hairline no topo. */
 
-.steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
+.how {
+  background: var(--surface);
 }
 
-.step__num {
+.how__inner {
+  padding-top: 140px;
+  padding-bottom: 140px;
+}
+
+.how__title {
+  max-width: 900px;
+  margin: var(--space-3) 0 96px;
+  font-size: clamp(40px, 5.6vw, 88px);
+  line-height: 0.94;
+}
+
+/* 4 colunas no desktop; quebram sozinhas conforme a largura */
+.steps {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  margin-bottom: 14px;
-  border: 1px solid var(--line-active);
-  border-radius: 50%;
-  background: var(--surface);
-  box-shadow: var(--shadow-sm);
-  color: var(--heading);
+  flex-wrap: wrap;
+  gap: var(--space-6) 32px;
+}
+
+.step {
+  flex: 1 1 240px;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line-active);
+}
+
+/* Número gigante: a cor clareia do passo 1 ao 4 */
+.step__num {
+  display: block;
+  color: var(--primary-dark);
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 15px;
+  font-size: 112px;
+  line-height: 0.85;
+}
+
+.step:nth-child(3) .step__num {
+  color: var(--primary);
+}
+
+/* O último passo fecha com a cor mais clara, também na hairline */
+.step:nth-child(4) {
+  border-top-color: var(--primary-light);
+}
+
+.step:nth-child(4) .step__num {
+  color: var(--primary-light);
 }
 
 .step__title {
-  margin: 0 0 6px;
+  margin: var(--space-4) 0 var(--space-2);
   font-weight: 700;
-  font-size: 17px;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: 0;
 }
 
 .step__text {
   color: var(--text-dim);
-  font-size: 13.5px;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
-@media (max-width: 900px) {
-  .steps {
-    grid-template-columns: 1fr 1fr;
+@media (max-width: 720px) {
+  .how__inner {
+    padding-top: 96px;
+    padding-bottom: 96px;
   }
-}
 
-@media (max-width: 560px) {
-  .steps {
-    grid-template-columns: 1fr;
+  .how__title {
+    margin-bottom: 64px;
   }
 }
