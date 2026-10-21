@@ -1,4 +1,5 @@
-/* Botão em pílula: 3 variantes × 3 tamanhos. */
+/* Botão em pílula: 3 variantes × 3 tamanhos.
+   Hover só em CSS (sem GSAP): sobe 1px e clareia um pouco, em 0.2s. */
 
 .button {
   display: inline-flex;
@@ -13,7 +14,12 @@
   text-align: center;
   white-space: nowrap;
   cursor: pointer;
-  transition: filter 0.15s, background-color 0.15s, border-color 0.15s, color 0.15s;
+  transition: transform 0.2s, filter 0.2s, background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
 }
 
 .button:focus-visible {
@@ -42,10 +48,6 @@
   background: linear-gradient(135deg, var(--grad-start), var(--primary) 55%, var(--primary-dark));
   color: var(--on-primary);
   font-weight: 600;
-}
-
-.button--primary:hover {
-  filter: brightness(1.1);
 }
 
 .button--secondary {
