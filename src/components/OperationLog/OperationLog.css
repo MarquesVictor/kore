@@ -50,3 +50,8 @@
   margin-left: auto;
   font-size: 11px;
 }
+
+/* Estado inicial dos eventos (useRevealItems no OperationLog.jsx). Só com JS. */
+.js .operation-log__events li {
+  opacity: 0;
+}
