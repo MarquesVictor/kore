@@ -1,0 +1,39 @@
+/* Faixa de CTA: fundo violeta escuro, texto centralizado. */
+
+.cta-band {
+  background: var(--violet-dark);
+  text-align: center;
+}
+
+.cta-band__title {
+  max-width: 680px;
+  margin: 0 auto 18px;
+  color: var(--on-violet);
+  font-size: clamp(30px, 4.5vw, 44px);
+}
+
+.cta-band__text {
+  margin-bottom: 28px;
+  color: var(--on-violet-muted);
+}
+
+.cta-band__button {
+  padding: 16px 32px;
+  font-size: 15px;
+}
+
+.cta-band__contact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 16px;
+  margin-top: 28px;
+  color: var(--on-violet-muted);
+  font-size: 14px;
+}
+
+/* O contorno de foco padrão (violeta) sumiria sobre o fundo violeta */
+.cta-band :focus-visible {
+  outline-color: var(--on-violet);
+}

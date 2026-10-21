@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>KORE — Frota, logística e segurança do trabalho numa única plataforma</title>
+    <meta
+      name="description"
+      content="KORE reúne frota, logística e segurança do trabalho numa única plataforma online. Crie sua conta e comece a operar em minutos — 14 dias grátis, sem instalação e sem fidelidade."
+    />
+
+    <!-- O marcador SITE_URL (entre %) é trocado pelo VITE_SITE_URL do .env (ver vite.config.js) -->
+    <link rel="canonical" href="%SITE_URL%/" />
+
+    <!-- Open Graph (pré-visualização ao compartilhar o link) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="%SITE_URL%/" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="KORE" />
+    <meta property="og:title" content="KORE — Do pátio ao documento assinado" />
+    <meta
+      property="og:description"
+      content="Frota, logística e segurança do trabalho numa única plataforma online. 14 dias grátis."
+    />
+    <meta property="og:image" content="%SITE_URL%/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Símbolo e logotipo KORE sobre fundo escuro" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Cor da barra do navegador no mobile, acompanhando o tema do sistema -->
+    <meta name="theme-color" content="#FAF9FD" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#09080F" media="(prefers-color-scheme: dark)" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Fontes da marca: Syne (títulos/wordmark), DM Sans (corpo), DM Mono (dados) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Aplica o tema salvo antes do React carregar, evitando o "piscar" do tema errado.
+         Fica em public/ e é carregado de forma síncrona de propósito. -->
+    <script src="/theme-init.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

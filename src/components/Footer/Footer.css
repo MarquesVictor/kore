@@ -1,0 +1,43 @@
+/* Rodapé em uma linha que quebra em telas estreitas. */
+
+.footer {
+  padding: 40px 0;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Logo menor que a do header (o tamanho do símbolo acompanha o font-size) */
+.footer__logo {
+  font-size: 16px;
+}
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+
+.footer__links a {
+  color: var(--text-dim);
+  font-family: var(--body);
+  font-size: 12.5px;
+}
+
+.footer__links a:hover {
+  color: var(--heading);
+}
+
+/* Sem opacidade reduzida, para manter contraste AA */
+.footer__copy {
+  color: var(--text-dim);
+  font-family: var(--mono);
+  font-size: 11px;
+}

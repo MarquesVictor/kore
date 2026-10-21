@@ -1,0 +1,75 @@
+/* Logo KORE.
+   O tamanho acompanha o font-size do elemento pai (tudo em "em"),
+   então basta mudar o font-size para ter a versão do header ou do footer. */
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.logo__symbol {
+  width: 1.4em;
+  height: 1.3em;
+  flex-shrink: 0;
+}
+
+/* Cores do gradiente e do Núcleo vêm dos tokens (mudam com o tema) */
+.logo__stop-1 {
+  stop-color: var(--logo-grad-1);
+}
+
+.logo__stop-2 {
+  stop-color: var(--logo-grad-2);
+}
+
+.logo__stop-3 {
+  stop-color: var(--logo-grad-3);
+}
+
+.logo__halo {
+  fill: var(--logo-halo);
+  fill-opacity: var(--logo-halo-opacity);
+}
+
+.logo__core {
+  fill: var(--logo-core);
+}
+
+.logo__center {
+  fill: var(--logo-center);
+}
+
+/* Wordmark: Syne 800, caixa alta, letter-spacing do guia (≈ 8px em 32px) */
+.logo__wordmark {
+  font-family: var(--display);
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--logo-wordmark);
+}
+
+/* Versões fixas, independentes do tema */
+.logo--on-dark {
+  --logo-grad-1: var(--k-dark-grad-1);
+  --logo-grad-2: var(--k-dark-grad-2);
+  --logo-grad-3: var(--k-dark-grad-3);
+  --logo-halo: var(--k-dark-halo);
+  --logo-halo-opacity: var(--k-dark-halo-opacity);
+  --logo-core: var(--k-dark-core);
+  --logo-center: var(--k-dark-center);
+  --logo-wordmark: var(--k-dark-wordmark);
+}
+
+.logo--on-light {
+  --logo-grad-1: var(--k-light-grad-1);
+  --logo-grad-2: var(--k-light-grad-2);
+  --logo-grad-3: var(--k-light-grad-3);
+  --logo-halo: var(--k-light-halo);
+  --logo-halo-opacity: var(--k-light-halo-opacity);
+  --logo-core: var(--k-light-core);
+  --logo-center: var(--k-light-center);
+  --logo-wordmark: var(--k-light-wordmark);
+}

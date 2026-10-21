@@ -1,0 +1,18 @@
+<!-- Favicon KORE: versão "ícone de app" do guia de marca
+     (símbolo K claro sobre quadrado com o gradiente violeta). Funciona em abas claras e escuras. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9B6CF6"/>
+      <stop offset="100%" stop-color="#5A34F0"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <g transform="translate(15.8 13.1) scale(0.45)">
+    <line x1="14" y1="7" x2="14" y2="77" stroke="#EDE8FF" stroke-width="11" stroke-linecap="round"/>
+    <path d="M14 42 L58 9" stroke="#EDE8FF" stroke-width="11" stroke-linecap="round" fill="none"/>
+    <path d="M14 42 L58 75" stroke="#EDE8FF" stroke-width="11" stroke-linecap="round" fill="none"/>
+    <circle cx="14" cy="42" r="6" fill="#FFFFFF" fill-opacity="0.6"/>
+    <circle cx="14" cy="42" r="2.8" fill="#FFFFFF"/>
+  </g>
+</svg>

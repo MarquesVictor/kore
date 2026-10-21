@@ -1,0 +1,85 @@
+/* Hero: duas colunas (texto + painel) que viram uma abaixo de 980px. */
+
+.hero {
+  /* O espaço inferior (64px) é o mesmo que separava o hero do ticker na landing.
+     overflow: hidden impede que o brilho do painel gere scroll horizontal. */
+  padding: 72px 0 64px;
+  overflow: hidden;
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero__title {
+  margin: 20px 0 22px;
+  font-size: clamp(38px, 5.2vw, 58px);
+}
+
+.hero__lead {
+  max-width: 520px;
+  margin-bottom: 26px;
+  color: var(--text-dim);
+  font-size: 16px;
+}
+
+.hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.hero__badge {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  color: var(--text-dim);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.hero__badge b {
+  color: var(--heading);
+  font-weight: 500;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.hero__actions .btn {
+  padding: 14px 26px;
+  font-size: 14px;
+}
+
+@media (max-width: 980px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding-top: 56px;
+  }
+}
+
+/* Em telas bem estreitas os botões ocupam a largura toda e podem quebrar linha */
+@media (max-width: 420px) {
+  .hero__actions .btn {
+    width: 100%;
+    text-align: center;
+    white-space: normal;
+  }
+}

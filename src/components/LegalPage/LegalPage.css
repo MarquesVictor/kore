@@ -1,0 +1,63 @@
+/* Página de documento legal: coluna estreita e confortável para leitura longa. */
+
+.legal {
+  padding: 72px 0 88px;
+}
+
+.legal__wrap {
+  max-width: 760px;
+}
+
+/* Aviso de rascunho em destaque, no topo */
+.legal__draft {
+  margin-bottom: 32px;
+  padding: 14px 18px;
+  border: 1px solid var(--line-active);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 14px;
+}
+
+.legal__title {
+  font-size: clamp(32px, 5vw, 44px);
+}
+
+.legal__updated {
+  margin-top: 12px;
+  color: var(--text-dim);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.legal__intro {
+  margin-top: 28px;
+  font-size: 16px;
+}
+
+.legal__section {
+  margin-top: 40px;
+  padding: 0; /* anula o padding global de <section> */
+}
+
+.legal__heading {
+  margin-bottom: 12px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.legal__section p {
+  color: var(--text-dim);
+  font-size: 15px;
+}
+
+.legal__section p + p {
+  margin-top: 12px;
+}
+
+@media (max-width: 720px) {
+  .legal {
+    padding: 48px 0 56px;
+  }
+}

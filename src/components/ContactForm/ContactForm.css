@@ -1,0 +1,135 @@
+/* Campos do formulário de contato (empilhados, largura total). */
+
+.contact-form {
+  display: grid;
+  gap: 16px;
+}
+
+.contact-form__field {
+  display: grid;
+  gap: 6px;
+}
+
+.contact-form__field label {
+  color: var(--heading);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.contact-form__optional {
+  color: var(--text-dim);
+  font-weight: 400;
+}
+
+.contact-form input:not([type='file']),
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--line-active);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+}
+
+.contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact-form input::placeholder {
+  color: var(--text-dim);
+}
+
+/* Seletor de arquivos com o botão no estilo do .btn-secondary */
+.contact-form input[type='file'] {
+  max-width: 100%;
+  color: var(--text-dim);
+  font: inherit;
+  font-size: 13px;
+}
+
+.contact-form input[type='file']::file-selector-button {
+  margin-right: 12px;
+  padding: 9px 16px;
+  border: 1px solid var(--line-active);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--heading);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.contact-form input[type='file']::file-selector-button:hover {
+  background: var(--surface-2);
+}
+
+.contact-form__hint {
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
+.contact-form__error {
+  color: var(--danger-text);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.contact-form__files {
+  display: grid;
+  gap: 2px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+/* Aviso de que o envio ainda não está ativo */
+.contact-form__notice {
+  padding: 12px 14px;
+  border: 1px solid var(--line-active);
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 13px;
+}
+
+.contact-form__notice a {
+  color: var(--heading);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.contact-form__consent {
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
+.contact-form__consent a {
+  color: var(--heading);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.contact-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.contact-form__actions .btn {
+  font-size: 14px;
+  padding: 12px 22px;
+}
+
+@media (max-width: 420px) {
+  .contact-form__actions .btn {
+    flex: 1;
+    text-align: center;
+  }
+}

@@ -1,0 +1,101 @@
+/* =============================================================
+   UTILITÁRIOS
+   Classes reaproveitadas por várias seções:
+   .eyebrow, .section-head, .section-alt e os botões (.btn-*).
+   ============================================================= */
+
+/* Rótulo pequeno em caixa alta acima dos títulos */
+.eyebrow {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: var(--line);
+  color: var(--heading);
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+/* Cabeçalho padrão das seções: eyebrow + h2 + parágrafo */
+.section-head {
+  max-width: 600px;
+  margin-bottom: 48px;
+}
+
+.section-head h2 {
+  margin-top: 14px;
+  font-size: clamp(28px, 4vw, 38px);
+}
+
+.section-head p:not(.eyebrow) {
+  margin-top: 14px;
+  color: var(--text-dim);
+  font-size: 15px;
+}
+
+/* Faixa com fundo diferenciado (Módulos e Planos) */
+.section-alt {
+  background: var(--surface-2);
+}
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-block;
+  padding: 11px 20px;
+  border: 1px solid var(--line-active);
+  border-radius: 6px;
+  font-family: var(--body);
+  font-weight: 500;
+  font-size: 13px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+/* Gradiente de marca encurtado (claro → primária) para manter o texto escuro com contraste AA */
+.btn-primary {
+  border: none;
+  background: linear-gradient(135deg, var(--violet-light), var(--violet));
+  color: var(--on-primary);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.08);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  border-color: var(--line-active);
+  background: var(--surface);
+  color: var(--heading);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-2);
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--text-dim);
+}
+
+.btn-ghost:hover {
+  color: var(--heading);
+}
+
+/* Botão sobre as faixas violeta (CTA e plano em destaque) */
+.btn-on-band {
+  border: none;
+  background: var(--surface);
+  color: var(--heading);
+  font-weight: 600;
+}
+
+.btn-on-band:hover {
+  filter: brightness(1.05);
+  box-shadow: var(--shadow-md);
+}

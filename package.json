@@ -1,0 +1,23 @@
+{
+  "name": "kore-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Site institucional da KORE — frota, logística e segurança do trabalho numa única plataforma.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.11"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

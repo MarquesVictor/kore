@@ -1,0 +1,68 @@
+/* Modal de contato centralizado, com fundo escurecido. */
+
+.contact-dialog {
+  width: min(560px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-dialog::backdrop {
+  background: var(--backdrop);
+  backdrop-filter: blur(2px);
+}
+
+/* Impede a página de rolar por trás do modal aberto */
+html:has(.contact-dialog[open]) {
+  overflow: hidden;
+}
+
+.contact-dialog__box {
+  padding: 28px;
+}
+
+.contact-dialog__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.contact-dialog__title {
+  font-size: 26px;
+}
+
+.contact-dialog__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line-active);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--heading);
+  cursor: pointer;
+}
+
+.contact-dialog__close:hover {
+  background: var(--surface-2);
+}
+
+.contact-dialog__close svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 560px) {
+  .contact-dialog__box {
+    padding: 22px 20px;
+  }
+}

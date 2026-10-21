@@ -1,0 +1,146 @@
+/* Header fixo no topo com fundo translúcido e desfoque. */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--header-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  box-shadow: var(--header-shadow);
+}
+
+.header__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 18px 48px;
+}
+
+.header__brand {
+  display: flex;
+  border-radius: 4px;
+}
+
+/* ---------- Links (desktop) ---------- */
+.header__links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.header__links a {
+  color: var(--text-dim);
+  font-size: 13.5px;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.header__links a:hover {
+  color: var(--heading);
+}
+
+/* ---------- Ações: tema + CTAs + botão de menu ---------- */
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.header__menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background: none;
+  color: var(--heading);
+  cursor: pointer;
+}
+
+.header__menu-toggle svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ---------- Painel mobile ---------- */
+.header__mobile {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 8px 24px 24px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+}
+
+.header__mobile-links a {
+  display: block;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.header__mobile-links a:hover {
+  color: var(--heading);
+}
+
+.header__mobile-cta {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.header__mobile-cta .btn {
+  text-align: center;
+  font-size: 14px;
+  padding: 13px 20px;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 860px) {
+  .header__nav {
+    display: none;
+  }
+
+  .header__menu-toggle {
+    display: flex;
+  }
+}
+
+@media (min-width: 861px) {
+  .header__mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .header__bar {
+    padding: 16px 24px;
+  }
+}
+
+/* Em telas estreitas os CTAs não cabem na barra: vão para o painel */
+@media (max-width: 560px) {
+  .header__cta {
+    display: none;
+  }
+
+  .header__actions {
+    gap: 8px;
+  }
+
+  .header__mobile-cta {
+    display: flex;
+  }
+}

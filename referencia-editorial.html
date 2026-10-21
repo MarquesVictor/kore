@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>KORE — Editorial ousado</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/kore/tokens.css">
+<link rel="stylesheet" href="ds/kore/components/bundle.css">
+<script src="ds/kore/components/bundle.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=DM+Sans:wght@300;400;500;600&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#09080F}
+a{color:#C084FC}a:hover{color:#EDE8FF}
+</style>
+</helmet>
+<div style="background: var(--bg); color: var(--text); font-family: var(--font-sans); min-height: 100vh; overflow-x: hidden;">
+
+  <!-- HEADER -->
+  <header style="max-width: 1360px; margin: 0 auto; padding: 24px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; border-bottom: 1px solid var(--line);">
+    <a href="#topo" style="display: flex; text-decoration: none;"><x-import component-from-global-scope="KORE.Logo" size="{{logoSize}}"></x-import></a>
+    <nav aria-label="Principal" style="display: flex; flex-wrap: wrap; gap: 8px 32px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">
+      <a href="#modulos" style="color: var(--text-dim); text-decoration: none;">(01) Módulos</a>
+      <a href="#como-funciona" style="color: var(--text-dim); text-decoration: none;">(02) Como funciona</a>
+      <a href="#planos" style="color: var(--text-dim); text-decoration: none;">(03) Planos</a>
+    </nav>
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <x-import component-from-global-scope="KORE.Button" variant="ghost" size="sm" href="#entrar">Entrar</x-import>
+      <x-import component-from-global-scope="KORE.Button" variant="primary" size="sm" href="#planos">Começar agora</x-import>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="topo" style="max-width: 1360px; margin: 0 auto; padding: 96px 40px 80px;">
+    <p style="margin: 0 0 40px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dim); display: flex; flex-wrap: wrap; gap: 8px 24px;">
+      <span style="color: var(--heading);">Plataforma de gestão operacional</span>
+      <span>Frota · Logística · Segurança do trabalho</span>
+    </p>
+    <h1 style="margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(56px, 10.5vw, 172px); line-height: 0.86; letter-spacing: -0.035em; color: var(--text);">Do pátio<br>ao documento<br><span style="color: var(--primary-light);">assinado.</span></h1>
+
+    <div style="margin-top: 72px; display: flex; flex-wrap: wrap; gap: 48px 80px; align-items: flex-end;">
+      <dl style="margin: 0; flex: 1 1 420px; display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid var(--line-active);">
+        <div style="flex: 1 1 120px; padding: 20px 24px 0 0;">
+          <dt style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-dim);">Módulos</dt>
+          <dd style="margin: 8px 0 0; font-family: var(--font-display); font-weight: 800; font-size: 56px; line-height: 1;">3</dd>
+        </div>
+        <div style="flex: 1 1 120px; padding: 20px 24px 0 0;">
+          <dt style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-dim);">Online</dt>
+          <dd style="margin: 8px 0 0; font-family: var(--font-display); font-weight: 800; font-size: 56px; line-height: 1;">100%</dd>
+        </div>
+        <div style="flex: 1 1 120px; padding: 20px 0 0 0;">
+          <dt style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-dim);">Grátis</dt>
+          <dd style="margin: 8px 0 0; font-family: var(--font-display); font-weight: 800; font-size: 56px; line-height: 1;">14 dias</dd>
+        </div>
+      </dl>
+      <div style="flex: 1 1 380px; max-width: 520px;">
+        <p style="margin: 0 0 32px; font-size: 18px; line-height: 1.65; color: var(--text-dim);">KORE reúne <span style="color: var(--text);">frota, logística e segurança do trabalho</span> numa única plataforma online. Crie sua conta, importe sua operação e comece a operar em minutos — sem instalação e sem contrato de fidelidade.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+          <x-import component-from-global-scope="KORE.Button" variant="primary" size="lg" href="#planos">Começar grátis por 14 dias</x-import>
+          <x-import component-from-global-scope="KORE.Button" variant="secondary" size="lg" href="#modulos">Ver os módulos</x-import>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTRO DE OPERAÇÃO -->
+  <section aria-label="Exemplo de registro de operação" style="border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+    <div style="max-width: 1360px; margin: 0 auto; padding: 20px 40px; display: flex; flex-wrap: wrap; gap: 12px 40px; align-items: center; font-family: var(--font-mono); font-size: 13px; color: var(--text-dim);">
+      <span style="display: flex; align-items: center; gap: 8px; color: var(--primary-light); letter-spacing: 1.5px; font-size: 11px; text-transform: uppercase;"><span style="width: 7px; height: 7px; border-radius: 50%; background: var(--nucleo);"></span>Operação ao vivo*</span>
+      <span>08:41 · <span style="color: var(--text);">FL-2291</span> saiu da Base Osasco</span>
+      <span>09:02 · EPI <span style="color: var(--text);">#A1123</span> assinada</span>
+      <span>09:17 · Entrega <span style="color: var(--text);">#38220</span> confirmada em Guarulhos</span>
+      <span style="margin-left: auto; font-size: 11px; opacity: .8;">*dados ilustrativos</span>
+    </div>
+  </section>
+
+  <!-- MÓDULOS -->
+  <section id="modulos" style="max-width: 1360px; margin: 0 auto; padding: 160px 40px 120px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 24px 80px; align-items: flex-end; margin-bottom: 96px;">
+      <h2 style="margin: 0; flex: 1 1 600px; font-family: var(--font-display); font-weight: 800; font-size: clamp(44px, 6.4vw, 104px); line-height: 0.92; letter-spacing: -0.03em;">Três frentes.<br><span style="color: var(--text-dim);">Uma plataforma.</span></h2>
+      <p style="margin: 0; flex: 1 1 300px; max-width: 380px; font-size: 16px; line-height: 1.7; color: var(--text-dim);"><span style="display: block; margin-bottom: 12px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 1.5px; color: var(--heading);">(01) MÓDULOS</span>Ative o que sua operação precisa hoje. Os módulos compartilham cadastros, alertas e relatórios — sem retrabalho entre eles.</p>
+    </div>
+
+    <!-- Frota -->
+    <article style="display: flex; flex-wrap: wrap; gap: 32px 64px; padding: 56px 0; border-top: 1px solid var(--line-active);">
+      <div style="flex: 1 1 420px;">
+        <p style="margin: 0 0 16px; display: flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 1.5px; color: var(--pillar-frota);"><span style="width: 12px; height: 12px; border-radius: 3px; background: var(--pillar-frota);"></span>A — FROTA</p>
+        <h3 style="margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(48px, 6vw, 96px); line-height: 0.9; letter-spacing: -0.03em;">Frota</h3>
+        <p style="margin: 20px 0 0; font-size: 20px; line-height: 1.5; color: var(--text-dim); max-width: 380px;">Cada veículo, rastreado do pátio à baixa.</p>
+      </div>
+      <ul style="flex: 1 1 520px; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px;">
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Gestão de veículos</strong><span style="font-size: 13px; color: var(--text-dim);">Cadastro, documentos e vencimentos</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Movimentação</strong><span style="font-size: 13px; color: var(--text-dim);">Saídas, retornos e transferências</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Ordem de serviço</strong><span style="font-size: 13px; color: var(--text-dim);">Manutenções preventivas e corretivas</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Status em tempo real</strong><span style="font-size: 13px; color: var(--text-dim);">Onde e em que condição está cada veículo</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Gestão de multas</strong><span style="font-size: 13px; color: var(--text-dim);">Registro e condutor responsável</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Checklist de saída</strong><span style="font-size: 13px; color: var(--text-dim);">Vistoria digital pelo celular</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Locadoras e bases</strong><span style="font-size: 13px; color: var(--text-dim);">Contratos e bases operacionais</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Tipos e modelos</strong><span style="font-size: 13px; color: var(--text-dim);">Marcas, modelos e categorias</span></li>
+      </ul>
+    </article>
+
+    <!-- Logística -->
+    <article style="display: flex; flex-wrap: wrap; gap: 32px 64px; padding: 56px 0; border-top: 1px solid var(--line-active);">
+      <div style="flex: 1 1 420px;">
+        <p style="margin: 0 0 16px; display: flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 1.5px; color: var(--pillar-suprimentos);"><span style="width: 12px; height: 12px; border-radius: 3px; background: var(--pillar-suprimentos);"></span>B — LOGÍSTICA</p>
+        <h3 style="margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(48px, 6vw, 96px); line-height: 0.9; letter-spacing: -0.03em;">Logística</h3>
+        <p style="margin: 20px 0 0; font-size: 20px; line-height: 1.5; color: var(--text-dim); max-width: 380px;">Da requisição à entrega comprovada.</p>
+      </div>
+      <ul style="flex: 1 1 520px; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px;">
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Rotas e viagens</strong><span style="font-size: 13px; color: var(--text-dim);">Motorista, veículo e destino</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Comprovante de entrega</strong><span style="font-size: 13px; color: var(--text-dim);">Foto e assinatura pelo celular</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Transferência de materiais</strong><span style="font-size: 13px; color: var(--text-dim);">Entre bases e filiais</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Requisição de material</strong><span style="font-size: 13px; color: var(--text-dim);">Solicitação e aprovação para campo</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Rastreio de serializados</strong><span style="font-size: 13px; color: var(--text-dim);">Por número de série</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Ocorrências</strong><span style="font-size: 13px; color: var(--text-dim);">Avaria, ausência e recusa</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Bases operacionais</strong><span style="font-size: 13px; color: var(--text-dim);">Pontos de operação</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Histórico</strong><span style="font-size: 13px; color: var(--text-dim);">Extrato por item ou base</span></li>
+      </ul>
+    </article>
+
+    <!-- SST -->
+    <article style="display: flex; flex-wrap: wrap; gap: 32px 64px; padding: 56px 0; border-top: 1px solid var(--line-active); border-bottom: 1px solid var(--line-active);">
+      <div style="flex: 1 1 420px;">
+        <p style="margin: 0 0 16px; display: flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 1.5px; color: var(--pillar-pessoas);"><span style="width: 12px; height: 12px; border-radius: 3px; background: var(--pillar-pessoas);"></span>C — SEGURANÇA DO TRABALHO</p>
+        <h3 style="margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(48px, 6vw, 96px); line-height: 0.9; letter-spacing: -0.03em;">SST</h3>
+        <p style="margin: 20px 0 0; font-size: 20px; line-height: 1.5; color: var(--text-dim); max-width: 380px;">Conformidade que não some na hora da fiscalização.</p>
+      </div>
+      <ul style="flex: 1 1 520px; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px;">
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Ficha de EPI</strong><span style="font-size: 13px; color: var(--text-dim);">Entrega e devolução com assinatura</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Controle de acidentes</strong><span style="font-size: 13px; color: var(--text-dim);">Registro e acompanhamento tipo CAT</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">APR</strong><span style="font-size: 13px; color: var(--text-dim);">Análise de risco antes da atividade</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Processo CIPA</strong><span style="font-size: 13px; color: var(--text-dim);">Candidatos, eleição e comissão</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Atestados</strong><span style="font-size: 13px; color: var(--text-dim);">Atestados e afastamentos</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Checklist de documentos</strong><span style="font-size: 13px; color: var(--text-dim);">Documentos obrigatórios</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Controle de atas</strong><span style="font-size: 13px; color: var(--text-dim);">Reuniões de segurança</span></li>
+        <li><strong style="display: block; font-weight: 500; font-size: 15px;">Painel SST</strong><span style="font-size: 13px; color: var(--text-dim);">Indicadores em tempo real</span></li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section id="como-funciona" style="background: var(--surface);">
+    <div style="max-width: 1360px; margin: 0 auto; padding: 140px 40px;">
+      <p style="margin: 0 0 16px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 1.5px; color: var(--heading);">(02) COMO FUNCIONA</p>
+      <h2 style="margin: 0 0 96px; max-width: 900px; font-family: var(--font-display); font-weight: 800; font-size: clamp(40px, 5.6vw, 88px); line-height: 0.94; letter-spacing: -0.03em;">Comece sem falar com ninguém.</h2>
+      <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 48px 32px;">
+        <li style="flex: 1 1 240px; border-top: 1px solid var(--line-active); padding-top: 24px;">
+          <span style="display: block; font-family: var(--font-display); font-weight: 800; font-size: 112px; line-height: 0.85; color: var(--primary-dark);">1</span>
+          <h3 style="margin: 24px 0 8px; font-family: var(--font-display); font-weight: 700; font-size: 22px;">Crie sua conta</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-dim);">E-mail e nome da empresa. Sem cartão de crédito.</p>
+        </li>
+        <li style="flex: 1 1 240px; border-top: 1px solid var(--line-active); padding-top: 24px;">
+          <span style="display: block; font-family: var(--font-display); font-weight: 800; font-size: 112px; line-height: 0.85; color: var(--primary-dark);">2</span>
+          <h3 style="margin: 24px 0 8px; font-family: var(--font-display); font-weight: 700; font-size: 22px;">Importe sua operação</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-dim);">Planilha de veículos, equipe e bases operacionais.</p>
+        </li>
+        <li style="flex: 1 1 240px; border-top: 1px solid var(--line-active); padding-top: 24px;">
+          <span style="display: block; font-family: var(--font-display); font-weight: 800; font-size: 112px; line-height: 0.85; color: var(--primary);">3</span>
+          <h3 style="margin: 24px 0 8px; font-family: var(--font-display); font-weight: 700; font-size: 22px;">Ative os módulos</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-dim);">Frota, logística, segurança do trabalho — ou os três.</p>
+        </li>
+        <li style="flex: 1 1 240px; border-top: 1px solid var(--primary-light); padding-top: 24px;">
+          <span style="display: block; font-family: var(--font-display); font-weight: 800; font-size: 112px; line-height: 0.85; color: var(--primary-light);">4</span>
+          <h3 style="margin: 24px 0 8px; font-family: var(--font-display); font-weight: 700; font-size: 22px;">Comece a operar</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-dim);">Alertas, checklists e relatórios no ar em minutos.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- PLANOS -->
+  <section id="planos" style="max-width: 1360px; margin: 0 auto; padding: 160px 40px 120px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 24px 80px; align-items: flex-end; margin-bottom: 64px;">
+      <h2 style="margin: 0; flex: 1 1 560px; font-family: var(--font-display); font-weight: 800; font-size: clamp(44px, 6.4vw, 104px); line-height: 0.92; letter-spacing: -0.03em;">Pague pelo<br>que usa.</h2>
+      <p style="margin: 0; flex: 1 1 300px; max-width: 380px; font-size: 16px; line-height: 1.7; color: var(--text-dim);"><span style="display: block; margin-bottom: 12px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 1.5px; color: var(--heading);">(03) PLANOS</span>Valor base por módulo ativo, mais um valor por veículo. Sem taxa de implantação.</p>
+    </div>
+
+    <div role="list" style="border-top: 1px solid var(--line-active);">
+      <div role="listitem" style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px 48px; padding: 40px 0; border-bottom: 1px solid var(--line-active);">
+        <div style="flex: 1 1 200px;">
+          <p style="margin: 0 0 6px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 1.5px; color: var(--text-dim);">ESSENCIAL</p>
+          <p style="margin: 0; font-size: 15px; color: var(--text-dim);">1 módulo à escolha</p>
+        </div>
+        <p style="margin: 0; flex: 0 0 auto; font-family: var(--font-display); font-weight: 800; font-size: 64px; line-height: 1; letter-spacing: -0.02em;">R$149<span style="font-family: var(--font-mono); font-weight: 400; font-size: 14px; letter-spacing: 0; color: var(--text-dim);"> /mês</span></p>
+        <p style="margin: 0; flex: 2 1 320px; font-size: 14px; line-height: 1.7; color: var(--text-dim);">Até 3 usuários · 5 veículos inclusos · Alertas e relatórios · Suporte por e-mail</p>
+        <x-import component-from-global-scope="KORE.Button" variant="secondary" href="#comecar">Começar agora</x-import>
+      </div>
+      <div role="listitem" style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px 48px; padding: 40px 32px; margin: 0 -32px; background: var(--surface-2); border-bottom: 1px solid var(--line-active);">
+        <div style="flex: 1 1 200px;">
+          <p style="margin: 0 0 6px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 1.5px; color: var(--primary-light);">PROFISSIONAL</p>
+          <p style="margin: 0; font-size: 15px; color: var(--text-dim);">2 módulos</p>
+        </div>
+        <p style="margin: 0; flex: 0 0 auto; font-family: var(--font-display); font-weight: 800; font-size: 64px; line-height: 1; letter-spacing: -0.02em; color: var(--primary-light);">R$349<span style="font-family: var(--font-mono); font-weight: 400; font-size: 14px; letter-spacing: 0; color: var(--text-dim);"> /mês</span></p>
+        <p style="margin: 0; flex: 2 1 320px; font-size: 14px; line-height: 1.7; color: var(--text-dim);">Até 10 usuários · 15 veículos inclusos · Relatórios agendados · Suporte por chat</p>
+        <x-import component-from-global-scope="KORE.Button" variant="primary" href="#comecar">Começar agora</x-import>
+      </div>
+      <div role="listitem" style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px 48px; padding: 40px 0; border-bottom: 1px solid var(--line-active);">
+        <div style="flex: 1 1 200px;">
+          <p style="margin: 0 0 6px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 1.5px; color: var(--text-dim);">COMPLETO</p>
+          <p style="margin: 0; font-size: 15px; color: var(--text-dim);">Frota + Logística + SST</p>
+        </div>
+        <p style="margin: 0; flex: 0 0 auto; font-family: var(--font-display); font-weight: 800; font-size: 64px; line-height: 1; letter-spacing: -0.02em;">R$649<span style="font-family: var(--font-mono); font-weight: 400; font-size: 14px; letter-spacing: 0; color: var(--text-dim);"> /mês</span></p>
+        <p style="margin: 0; flex: 2 1 320px; font-size: 14px; line-height: 1.7; color: var(--text-dim);">Usuários ilimitados · 30 veículos inclusos · Acesso via API · Suporte prioritário</p>
+        <x-import component-from-global-scope="KORE.Button" variant="secondary" href="#comecar">Começar agora</x-import>
+      </div>
+    </div>
+    <p style="margin: 24px 0 0; font-family: var(--font-mono); font-size: 12px; color: var(--text-dim);">*Valores de lançamento, sujeitos a validação de mercado. Veículo adicional cobrado à parte.</p>
+  </section>
+
+  <!-- CTA -->
+  <section style="border-top: 1px solid var(--line);">
+    <div style="max-width: 1360px; margin: 0 auto; padding: 160px 40px 140px;">
+      <h2 style="margin: 0 0 56px; font-family: var(--font-display); font-weight: 800; font-size: clamp(48px, 8.4vw, 136px); line-height: 0.88; letter-spacing: -0.035em;">Sua operação não precisa de mais uma <span style="color: var(--primary-light);">planilha.</span></h2>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px;">
+        <x-import component-from-global-scope="KORE.Button" variant="primary" size="lg" href="#planos">Começar agora</x-import>
+        <span style="font-size: 15px; color: var(--text-dim);">Grátis por 14 dias. Cancele quando quiser.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top: 1px solid var(--line);">
+    <div style="max-width: 1360px; margin: 0 auto; padding: 40px; display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: center; justify-content: space-between;">
+      <x-import component-from-global-scope="KORE.Logo" size="16"></x-import>
+      <nav aria-label="Rodapé" style="display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 13px;">
+        <a href="#modulos" style="color: var(--text-dim); text-decoration: none;">Módulos</a>
+        <a href="#planos" style="color: var(--text-dim); text-decoration: none;">Planos</a>
+        <a href="#privacidade" style="color: var(--text-dim); text-decoration: none;">Privacidade</a>
+        <a href="#termos" style="color: var(--text-dim); text-decoration: none;">Termos</a>
+      </nav>
+      <p style="margin: 0; font-family: var(--font-mono); font-size: 12px; color: var(--text-dim);">© 2026 KORE</p>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4600}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { logoSize: 22 };
+  }
+}
+</script>
+</body>
+</html>
