@@ -1,7 +1,7 @@
 /* =============================================================
    BASE
    Reset, estilos do body, tipografia base, container (.wrap),
-   foco visível e animações compartilhadas.
+   foco visível e ajustes para quem prefere menos movimento.
    ============================================================= */
 
 *,
@@ -100,17 +100,6 @@ h3 {
 
 .skip-link:focus {
   transform: none;
-}
-
-/* Pulsar dos pontinhos "ao vivo" (painel do hero e ticker) */
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3;
-  }
 }
 
 /* Quem pede menos movimento não recebe animações nem scroll suave */

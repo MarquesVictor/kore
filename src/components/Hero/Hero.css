@@ -1,85 +1,117 @@
-/* Hero: duas colunas (texto + painel) que viram uma abaixo de 980px. */
+/* Hero editorial: a tipografia é a protagonista. Sem painel, sem brilho, sem cards. */
 
 .hero {
-  /* O espaço inferior (64px) é o mesmo que separava o hero do ticker na landing.
-     overflow: hidden impede que o brilho do painel gere scroll horizontal. */
-  padding: 72px 0 64px;
-  overflow: hidden;
+  padding: 96px 0 80px;
 }
 
-.hero__grid {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 56px;
-  align-items: center;
-}
-
-.hero__title {
-  margin: 20px 0 22px;
-  font-size: clamp(38px, 5.2vw, 58px);
-}
-
-.hero__lead {
-  max-width: 520px;
-  margin-bottom: 26px;
-  color: var(--text-dim);
-  font-size: 16px;
-}
-
-.hero__badges {
+/* Linha de rótulo em DM Mono acima do título */
+.hero__label {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 30px;
-}
-
-.hero__badge {
-  display: flex;
-  align-items: center;
-  padding: 8px 16px;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: var(--surface);
-  box-shadow: var(--shadow-sm);
+  gap: var(--space-2) var(--space-4);
+  margin-bottom: 40px;
   color: var(--text-dim);
   font-family: var(--font-mono);
   font-size: 12px;
-  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
-.hero__badge b {
+.hero__label-main {
   color: var(--heading);
-  font-weight: 500;
+}
+
+/* Título gigante: Syne 800, entrelinha 0.86.
+   A Syne 800 é muito larga: "documento" mede ~9.1em. Por isso o tamanho acompanha
+   a largura útil do container (÷ 9.3) em vez de 10.5vw — assim a palavra mais longa
+   sempre cabe na linha, de 390px a 1440px+, sem passar do teto de 172px. */
+.hero__title {
+  font-size: clamp(32px, calc((min(100vw, var(--container)) - 2 * var(--gutter)) / 9.3), 172px);
+  line-height: 0.86;
+  letter-spacing: -0.035em;
+}
+
+.hero__line {
+  display: block;
+}
+
+.hero__accent {
+  color: var(--primary-light);
+}
+
+/* Números à esquerda, texto + CTAs à direita; quebra em uma coluna quando não cabe */
+.hero__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-6) 80px;
+  margin-top: 72px;
+}
+
+/* ---------- Números ---------- */
+.hero__stats {
+  flex: 1 1 420px;
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--line-active);
+}
+
+.hero__stat {
+  flex: 1 1 120px;
+  padding: 20px var(--space-4) 0 0;
+}
+
+.hero__stat:last-child {
+  padding-right: 0;
+}
+
+.hero__stat dt {
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.hero__stat dd {
+  margin-top: var(--space-2);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 56px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* ---------- Texto e CTAs ---------- */
+.hero__copy {
+  flex: 1 1 380px;
+  max-width: 520px;
+}
+
+.hero__lead {
+  margin-bottom: 32px;
+  color: var(--text-dim);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.hero__lead strong {
+  color: var(--text);
+  font-weight: 400;
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
-}
-
-.hero__actions .btn {
-  padding: 14px 26px;
-  font-size: 14px;
-}
-
-@media (max-width: 980px) {
-  .hero__grid {
-    grid-template-columns: 1fr;
-  }
+  gap: 12px;
 }
 
 @media (max-width: 720px) {
   .hero {
-    padding-top: 56px;
+    padding: 64px 0 64px;
   }
-}
 
-/* Em telas bem estreitas os botões ocupam a largura toda e podem quebrar linha */
-@media (max-width: 420px) {
-  .hero__actions .btn {
-    width: 100%;
-    text-align: center;
-    white-space: normal;
+  .hero__bottom {
+    margin-top: 56px;
   }
 }

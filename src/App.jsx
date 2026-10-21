@@ -2,7 +2,7 @@
 // A navegação é por âncoras (#modulos, #como-funciona, #planos) com scroll suave.
 import Header from './components/Header/Header.jsx';
 import Hero from './components/Hero/Hero.jsx';
-import Ticker from './components/Ticker/Ticker.jsx';
+import OperationLog from './components/OperationLog/OperationLog.jsx';
 import Modules from './components/Modules/Modules.jsx';
 import HowItWorks from './components/HowItWorks/HowItWorks.jsx';
 import Pricing from './components/Pricing/Pricing.jsx';
@@ -22,7 +22,7 @@ export default function App() {
 
       <main id="conteudo" tabIndex={-1}>
         <Hero />
-        <Ticker />
+        <OperationLog />
         <Modules />
         <HowItWorks />
         <Pricing />
