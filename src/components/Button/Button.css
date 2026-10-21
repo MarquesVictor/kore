@@ -68,3 +68,10 @@
 .button--ghost:hover {
   color: var(--text);
 }
+
+/* "Reduzir movimento": o hover só clareia, não sobe */
+@media (prefers-reduced-motion: reduce) {
+  .button:hover {
+    transform: none;
+  }
+}
