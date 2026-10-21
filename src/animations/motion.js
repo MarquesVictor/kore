@@ -137,13 +137,21 @@ export function drawLine(targets, { duration = 0.8, stagger = 0, delay = 0 } = {
   );
 }
 
-/** Número que conta de 0 até o valor escrito no elemento (só o número, sem prefixo/sufixo). */
+/**
+ * Número que conta de 0 até o valor escrito no elemento (só o número, sem prefixo/sufixo).
+ * Enquanto conta, a largura fica travada na do valor final: os dígitos mudam de largura
+ * e, sem isso, o que está ao lado (ex.: itens do plano) "andaria" junto.
+ */
 export function countUp(targets, { duration = 0.7, delay = 0 } = {}) {
-  return gsap.from(targets, {
+  const numbers = gsap.utils.toArray(targets);
+  gsap.set(numbers, { display: 'inline-block', width: (i, el) => el.getBoundingClientRect().width });
+
+  return gsap.from(numbers, {
     textContent: 0,
     snap: { textContent: 1 },
     duration,
     delay,
     ease: 'power2.out',
+    onComplete: () => gsap.set(numbers, { clearProps: 'display,width' }),
   });
 }

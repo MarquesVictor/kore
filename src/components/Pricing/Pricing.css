@@ -20,6 +20,14 @@
   font-size: 12px;
 }
 
+/* Estado inicial da entrada (hooks no Pricing.jsx). Só com JS. */
+.js .pricing .display,
+.js .pricing .section-intro__text,
+.js .plan-row,
+.js .pricing__note {
+  opacity: 0;
+}
+
 @media (max-width: 720px) {
   .pricing {
     padding: 96px 0 72px;

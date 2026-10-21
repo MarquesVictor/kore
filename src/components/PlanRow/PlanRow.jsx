@@ -14,8 +14,9 @@ export default function PlanRow({ plan }) {
         <p className="plan-row__desc">{plan.desc}</p>
       </div>
 
+      {/* Só o número fica no span: é ele que conta na animação (Pricing.jsx) */}
       <p className="plan-row__price">
-        {plan.price}
+        R$<span className="plan-row__amount">{plan.price}</span>
         <span className="plan-row__period"> {plan.period}</span>
       </p>
 
