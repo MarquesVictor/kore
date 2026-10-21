@@ -15,7 +15,7 @@
   height: 40px;
   border-radius: 50%;
   background: var(--whatsapp);
-  color: var(--on-accent);
+  color: var(--on-band);
   transition: filter 0.15s, box-shadow 0.15s;
 }
 
@@ -59,7 +59,7 @@
 }
 
 .contact-links--on-band .contact-links__email {
-  color: var(--on-violet);
+  color: var(--on-band);
   font-size: 14px;
   font-weight: 600;
   text-decoration: underline;
@@ -67,5 +67,5 @@
 }
 
 .contact-links--on-band .contact-links__email:hover {
-  color: var(--on-violet-muted);
+  color: var(--on-band);
 }

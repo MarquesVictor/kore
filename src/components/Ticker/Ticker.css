@@ -2,7 +2,7 @@
 
 .ticker__band {
   position: relative;
-  background: var(--violet-dark);
+  background: var(--primary-dark);
 }
 
 /* Rótulo fixo à esquerda; o fundo violeta cobre os eventos que passam por baixo */
@@ -16,9 +16,9 @@
   gap: 8px;
   padding-right: 18px;
   transform: translateY(-50%);
-  background: var(--violet-dark);
-  color: var(--on-violet-soft);
-  font-family: var(--mono);
+  background: var(--primary-dark);
+  color: var(--on-band);
+  font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.1em;
 }
@@ -27,7 +27,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--on-violet);
+  background: var(--on-band);
   animation: pulse 1.6s infinite;
 }
 
@@ -53,13 +53,13 @@
   gap: 48px;
   padding: 16px 48px 16px 0;
   white-space: nowrap;
-  color: var(--on-violet-muted);
-  font-family: var(--mono);
+  color: var(--on-band);
+  font-family: var(--font-mono);
   font-size: 13px;
 }
 
 .ticker__group b {
-  color: var(--on-violet);
+  color: var(--on-band);
   font-weight: 500;
 }
 
@@ -74,10 +74,10 @@
 
 .ticker__note {
   padding: 9px 48px 14px;
-  border-top: 1px solid var(--on-violet-line);
-  background: var(--violet-dark);
-  color: var(--on-violet-soft);
-  font-family: var(--mono);
+  border-top: 1px solid var(--line);
+  background: var(--primary-dark);
+  color: var(--on-band);
+  font-family: var(--font-mono);
   font-size: 11px;
   text-align: center;
 }

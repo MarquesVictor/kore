@@ -1,10 +1,11 @@
 // Define o tema antes do primeiro paint (carregado no <head> do index.html).
-// Ordem de decisão: preferência salva → preferência do sistema → claro.
+// Ordem de decisão: preferência salva → preferência do sistema → escuro.
+// O escuro é o padrão (:root em tokens.css); o claro aplica data-theme="light".
 // A chave "kore-theme" precisa ser a mesma usada em src/hooks/useTheme.js.
 (function () {
-  var prefersDark =
-    window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  var theme = prefersDark ? 'dark' : 'light';
+  var prefersLight =
+    window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  var theme = prefersLight ? 'light' : 'dark';
 
   // localStorage pode lançar erro (modo privado, cookies bloqueados etc.)
   try {
@@ -14,5 +15,5 @@
     // Sem acesso ao storage: fica com a preferência do sistema.
   }
 
-  if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
 })();

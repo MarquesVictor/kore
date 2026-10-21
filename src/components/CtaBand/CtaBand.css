@@ -1,20 +1,20 @@
 /* Faixa de CTA: fundo violeta escuro, texto centralizado. */
 
 .cta-band {
-  background: var(--violet-dark);
+  background: var(--primary-dark);
   text-align: center;
 }
 
 .cta-band__title {
   max-width: 680px;
   margin: 0 auto 18px;
-  color: var(--on-violet);
+  color: var(--on-band);
   font-size: clamp(30px, 4.5vw, 44px);
 }
 
 .cta-band__text {
   margin-bottom: 28px;
-  color: var(--on-violet-muted);
+  color: var(--on-band);
 }
 
 .cta-band__button {
@@ -29,11 +29,11 @@
   justify-content: center;
   gap: 12px 16px;
   margin-top: 28px;
-  color: var(--on-violet-muted);
+  color: var(--on-band);
   font-size: 14px;
 }
 
 /* O contorno de foco padrão (violeta) sumiria sobre o fundo violeta */
 .cta-band :focus-visible {
-  outline-color: var(--on-violet);
+  outline-color: var(--on-band);
 }

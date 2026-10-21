@@ -18,7 +18,7 @@
   background: var(--surface);
   box-shadow: var(--shadow-sm);
   color: var(--heading);
-  font-family: var(--display);
+  font-family: var(--font-display);
   font-weight: 800;
   font-size: 15px;
 }

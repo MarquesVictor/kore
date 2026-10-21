@@ -42,7 +42,7 @@
   background: var(--surface);
   box-shadow: var(--shadow-sm);
   color: var(--text-dim);
-  font-family: var(--mono);
+  font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 500;
 }

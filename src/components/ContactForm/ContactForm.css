@@ -82,7 +82,7 @@
   display: grid;
   gap: 2px;
   color: var(--text);
-  font-family: var(--mono);
+  font-family: var(--font-mono);
   font-size: 12px;
 }
 

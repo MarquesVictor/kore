@@ -9,7 +9,7 @@
   position: absolute;
   inset: -40px;
   z-index: 0;
-  background: radial-gradient(circle at 30% 20%, var(--hero-glow), transparent 60%);
+  background: radial-gradient(circle at 30% 20%, var(--primary-soft), transparent 60%);
   filter: blur(10px);
 }
 
@@ -31,7 +31,7 @@
   padding-bottom: 18px;
   border-bottom: 1px solid var(--line);
   color: var(--text-dim);
-  font-family: var(--mono);
+  font-family: var(--font-mono);
   font-size: 11.5px;
   letter-spacing: 0.06em;
 }
@@ -40,7 +40,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--violet);
+  background: var(--primary);
   animation: pulse 1.6s infinite;
 }
 
@@ -65,7 +65,7 @@
   width: 30px;
   height: 30px;
   border-radius: 8px;
-  color: var(--on-accent);
+  color: var(--on-band);
 }
 
 .hero-panel__icon svg {
@@ -74,28 +74,28 @@
 }
 
 .hero-panel__icon--frota {
-  background: var(--frota);
+  background: var(--pillar-frota);
 }
 
 .hero-panel__icon--logistica {
-  background: var(--logistica);
+  background: var(--pillar-suprimentos);
 }
 
 .hero-panel__icon--sst {
-  background: var(--sst);
+  background: var(--pillar-pessoas);
 }
 
 .hero-panel__stat strong {
   display: block;
   color: var(--heading);
-  font-family: var(--display);
+  font-family: var(--font-display);
   font-size: 22px;
   font-weight: 800;
 }
 
 .hero-panel__stat small {
   color: var(--text-dim);
-  font-family: var(--body);
+  font-family: var(--font-sans);
   font-size: 11.5px;
   font-weight: 500;
 }
@@ -134,7 +134,7 @@
 .hero-panel__caption {
   margin-top: 14px;
   color: var(--text-dim);
-  font-family: var(--mono);
+  font-family: var(--font-mono);
   font-size: 11px;
   text-align: right;
 }

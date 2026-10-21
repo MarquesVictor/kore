@@ -3,7 +3,7 @@
 .module-card {
   padding: 28px;
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: var(--radius-md);
   background: var(--surface);
   box-shadow: var(--shadow-sm);
   opacity: 0;
@@ -22,18 +22,18 @@
 
 /* Cor de cada pilar: fundo do ícone e texto do rótulo */
 .module-card--frota {
-  --pillar: var(--frota);
-  --pillar-text: var(--frota-text);
+  --pillar: var(--pillar-frota);
+  --pillar-text: var(--pillar-frota);
 }
 
 .module-card--logistica {
-  --pillar: var(--logistica);
-  --pillar-text: var(--logistica-text);
+  --pillar: var(--pillar-suprimentos);
+  --pillar-text: var(--pillar-suprimentos);
 }
 
 .module-card--sst {
-  --pillar: var(--sst);
-  --pillar-text: var(--sst-text);
+  --pillar: var(--pillar-pessoas);
+  --pillar-text: var(--pillar-pessoas);
 }
 
 .module-card__icon {
@@ -45,7 +45,7 @@
   margin-bottom: 16px;
   border-radius: 12px;
   background: var(--pillar);
-  color: var(--on-accent);
+  color: var(--on-band);
 }
 
 .module-card__icon svg {
@@ -56,7 +56,7 @@
 .module-card__tag {
   margin-bottom: 6px;
   color: var(--pillar-text);
-  font-family: var(--body);
+  font-family: var(--font-sans);
   font-weight: 600;
   font-size: 10px;
   letter-spacing: 0.2em;

@@ -5,7 +5,7 @@
   flex-direction: column;
   padding: 28px;
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: var(--radius-md);
   background: var(--surface);
   box-shadow: var(--shadow-sm);
 }
@@ -13,7 +13,7 @@
 /* Nome do plano: é um h3 por semântica, mas com visual de rótulo */
 .plan-card__name {
   color: var(--text-dim);
-  font-family: var(--body);
+  font-family: var(--font-sans);
   font-weight: 600;
   font-size: 10px;
   line-height: 1.7;
@@ -24,14 +24,14 @@
 .plan-card__price {
   margin: 10px 0 2px;
   color: var(--heading);
-  font-family: var(--display);
+  font-family: var(--font-display);
   font-size: 36px;
   font-weight: 800;
 }
 
 .plan-card__price span {
   color: var(--text-dim);
-  font-family: var(--mono);
+  font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 400;
 }
@@ -73,29 +73,29 @@
    os textos claros pequenos tenham contraste AA em todo o card. */
 .plan-card--featured {
   border: none;
-  background: linear-gradient(160deg, var(--violet-glow), var(--violet-dark));
+  background: linear-gradient(160deg, var(--glow), var(--primary-dark));
   box-shadow: var(--shadow-md);
   transform: scale(1.03);
 }
 
 .plan-card--featured .plan-card__price {
-  color: var(--on-violet);
+  color: var(--on-band);
 }
 
 .plan-card--featured .plan-card__name,
 .plan-card--featured .plan-card__price span,
 .plan-card--featured .plan-card__desc,
 .plan-card--featured .plan-card__list li {
-  color: var(--on-violet-muted);
+  color: var(--on-band);
 }
 
 .plan-card--featured .plan-card__list li::before {
-  color: var(--on-violet);
+  color: var(--on-band);
 }
 
 /* O contorno de foco padrão (violeta) sumiria sobre o fundo violeta */
 .plan-card--featured :focus-visible {
-  outline-color: var(--on-violet);
+  outline-color: var(--on-band);
 }
 
 @media (max-width: 900px) {

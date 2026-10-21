@@ -10,7 +10,7 @@
 .pricing__note {
   margin-top: 20px;
   color: var(--text-dim);
-  font-family: var(--mono);
+  font-family: var(--font-mono);
   font-size: 11px;
 }
 

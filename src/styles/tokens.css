@@ -2,44 +2,106 @@
    TOKENS DE DESIGN
    Único arquivo do projeto com cores literais (hex/rgba).
    Os componentes usam apenas var(--...).
-   - :root                   → constantes de marca + tema claro (padrão)
-   - html[data-theme="dark"] → sobrescreve só o que muda no escuro
+
+   1) Tokens oficiais do Design System KORE (cópia de docs/design/tokens.css).
+      :root já é o tema ESCURO (padrão); [data-theme="light"] troca para o claro.
+   2) Extensões do projeto: tokens que o site usa e o DS ainda não tem.
    ============================================================= */
 
-:root {
-  /* ---------- Marca — constantes, não mudam entre temas ---------- */
-  --violet-light: #D09AF8;
-  --violet: #9B6CF6;
-  --violet-dark: #5A34F0;
-  --violet-glow: #6B3FD6;
+/* ---------- 1) Tokens oficiais ---------- */
+/* KORE — generated from tokens.json */
+:root, [data-theme="dark"] {
+  --bg: #09080F;
+  --surface: #131120;
+  --surface-2: #1C1830;
+  --text: #EDE8FF;
+  --text-dim: #8881A8;
+  --text-faint: #3E3C52;
+  --heading: #9B6CF6;
+  --primary-light: #C084FC;
+  --primary: #9B6CF6;
+  --primary-dark: #5A34F0;
+  --grad-start: #D09AF8;
+  --glow: #6B3FD6;
   --nucleo: #B07AF8;
+  --on-primary: #0C0A16;
+  --on-band: #FFFFFF;
+  --primary-soft: rgba(155,108,246,.12);
+  --line: rgba(155,108,246,.14);
+  --line-active: rgba(155,108,246,.32);
+  --focus: #C084FC;
+  --pillar-suprimentos: #3B8BF5;
+  --pillar-campo: #22C55E;
+  --pillar-frota: #F59E0B;
+  --pillar-pessoas: #EC4899;
+  --pillar-gestao: #9B6CF6;
+  --pillar-inteligencia: #EF4444;
+  --pillar-conecta: #06B6D4;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.35);
+  --shadow-md: 0 16px 40px rgba(0,0,0,.5);
+}
+[data-theme="light"] {
+  --bg: #FAF9FD;
+  --surface: #FFFFFF;
+  --surface-2: #F1EDFB;
+  --text: #18132B;
+  --text-dim: #544C74;
+  --text-faint: #8B7BAA;
+  --heading: #5A34F0;
+  --primary-light: #7C3AED;
+  --primary: #6D28D9;
+  --primary-dark: #4C1D95;
+  --grad-start: #7C3AED;
+  --glow: #6B3FD6;
+  --nucleo: #6D28D9;
+  --on-primary: #FFFFFF;
+  --on-band: #FFFFFF;
+  --primary-soft: rgba(90,52,240,.08);
+  --line: rgba(90,52,240,.14);
+  --line-active: rgba(90,52,240,.34);
+  --focus: #5A34F0;
+  --pillar-suprimentos: #1D4ED8;
+  --pillar-campo: #15803D;
+  --pillar-frota: #B45309;
+  --pillar-pessoas: #BE185D;
+  --pillar-gestao: #5A34F0;
+  --pillar-inteligencia: #B91C1C;
+  --pillar-conecta: #0E7490;
+  --shadow-sm: 0 2px 8px rgba(90,52,240,.08);
+  --shadow-md: 0 12px 32px rgba(90,52,240,.12);
+}
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-6: 48px;
+  --space-10: 80px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 99px;
+  --font-display: "Syne", system-ui, sans-serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
+}
 
-  /* Cores dos pilares (módulos) */
-  --frota: #F59E0B;
-  --logistica: #3B8BF5;
-  --sst: #EC4899;
-
-  /* Texto e detalhes sobre fundos coloridos (faixas violeta, ícones dos pilares) */
-  --on-primary: #0C0A16;                  /* texto do botão primário (gradiente claro) */
-  --on-accent: #FFFFFF;                   /* ícones brancos sobre a cor do pilar */
-  --on-violet: #FFFFFF;                   /* títulos sobre violeta */
-  --on-violet-muted: rgba(255, 255, 255, 0.9); /* textos de apoio sobre violeta (AA) */
-  --on-violet-soft: #EDE4FF;              /* labels mono do ticker */
-  --on-violet-line: rgba(255, 255, 255, 0.12);
-
+/* ---------- 2) Extensões do projeto ---------- */
+:root {
   /* Verde oficial do WhatsApp (ícone de contato) */
   --whatsapp: #25D366;
 
   /* Fundo escurecido atrás do formulário de contato (modal) */
   --backdrop: rgba(9, 8, 15, 0.6);
 
-  /* Mensagens de erro em formulários */
-  --danger-text: #B42318;
+  /* Altura aproximada do header fixo — usada no scroll-margin-top das âncoras */
+  --header-h: 82px;
 
-  /* Brilho atrás do painel do hero */
-  --hero-glow: rgba(155, 108, 246, 0.28);
+  /* Container das seções editoriais */
+  --container: 1360px;
+  --gutter: 40px;
 
-  /* ---------- Símbolo K (guia de marca) ---------- */
+  /* Símbolo K — cores exatas do guia de marca */
   /* Versão para fundo escuro */
   --k-dark-grad-1: #D09AF8;
   --k-dark-grad-2: #9B6CF6;
@@ -61,68 +123,21 @@
   --k-light-core: #6D28D9;
   --k-light-center: #4C1D95;
   --k-light-wordmark: #09080F;
-
-  /* ---------- Forma e tipografia ---------- */
-  --radius: 12px;
-  --display: 'Syne', sans-serif;
-  --body: 'DM Sans', sans-serif;
-  --mono: 'DM Mono', monospace;
-
-  /* Altura aproximada do header fixo — usada no scroll-margin-top das âncoras */
-  --header-h: 82px;
-
-  /* ---------- TEMA CLARO (padrão) ---------- */
-  --bg: #FAF9FD;
-  --surface: #FFFFFF;
-  --surface-2: #F1EDFB;
-  --text: #18132B;
-  --text-dim: #544C74;
-  --heading: #5A34F0;
-  --line: rgba(90, 52, 240, 0.14);
-  --line-active: rgba(90, 52, 240, 0.34);
-  --frota-text: #B45309;
-  --logistica-text: #1D4ED8;
-  --sst-text: #BE185D;
-  --header-bg: rgba(250, 249, 253, 0.86);
-  --header-shadow: 0 4px 20px rgba(90, 52, 240, 0.06);
-  --shadow-sm: 0 2px 8px rgba(90, 52, 240, 0.08);
-  --shadow-md: 0 12px 32px rgba(90, 52, 240, 0.12);
-
-  /* Logo acompanha o tema: no claro usa a versão "fundo claro" */
-  --logo-grad-1: var(--k-light-grad-1);
-  --logo-grad-2: var(--k-light-grad-2);
-  --logo-grad-3: var(--k-light-grad-3);
-  --logo-halo: var(--k-light-halo);
-  --logo-halo-opacity: var(--k-light-halo-opacity);
-  --logo-core: var(--k-light-core);
-  --logo-center: var(--k-light-center);
-  --logo-wordmark: var(--k-light-wordmark);
 }
 
 @media (max-width: 720px) {
   :root {
     --header-h: 74px;
+    --gutter: 20px;
   }
 }
 
-/* ---------- TEMA ESCURO ---------- */
-html[data-theme='dark'] {
-  --bg: #09080F;
-  --surface: #131120;
-  --surface-2: #1C1830;
-  --text: #EDE8FF;
-  --text-dim: #8881A8;
-  --heading: #9B6CF6;
-  --line: rgba(155, 108, 246, 0.14);
-  --line-active: rgba(155, 108, 246, 0.32);
-  --frota-text: #F59E0B;
-  --logistica-text: #3B8BF5;
-  --sst-text: #EC4899;
-  --header-bg: rgba(9, 8, 15, 0.86);
+/* Tema escuro (padrão) */
+:root,
+[data-theme="dark"] {
   --danger-text: #F97066;
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
-  --shadow-md: 0 16px 40px rgba(0, 0, 0, 0.5);
 
+  /* Logo acompanha o tema */
   --logo-grad-1: var(--k-dark-grad-1);
   --logo-grad-2: var(--k-dark-grad-2);
   --logo-grad-3: var(--k-dark-grad-3);
@@ -131,4 +146,18 @@ html[data-theme='dark'] {
   --logo-core: var(--k-dark-core);
   --logo-center: var(--k-dark-center);
   --logo-wordmark: var(--k-dark-wordmark);
+}
+
+/* Tema claro */
+[data-theme="light"] {
+  --danger-text: #B42318;
+
+  --logo-grad-1: var(--k-light-grad-1);
+  --logo-grad-2: var(--k-light-grad-2);
+  --logo-grad-3: var(--k-light-grad-3);
+  --logo-halo: var(--k-light-halo);
+  --logo-halo-opacity: var(--k-light-halo-opacity);
+  --logo-core: var(--k-light-core);
+  --logo-center: var(--k-light-center);
+  --logo-wordmark: var(--k-light-wordmark);
 }

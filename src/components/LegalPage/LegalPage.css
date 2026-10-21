@@ -13,7 +13,7 @@
   margin-bottom: 32px;
   padding: 14px 18px;
   border: 1px solid var(--line-active);
-  border-radius: var(--radius);
+  border-radius: var(--radius-md);
   background: var(--surface-2);
   color: var(--text);
   font-size: 14px;
@@ -26,7 +26,7 @@
 .legal__updated {
   margin-top: 12px;
   color: var(--text-dim);
-  font-family: var(--mono);
+  font-family: var(--font-mono);
   font-size: 12px;
 }
 

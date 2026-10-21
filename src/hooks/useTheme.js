@@ -1,12 +1,12 @@
 // Hook de tema claro/escuro.
-// - Aplica data-theme="dark" no <html> (o CSS em tokens.css troca as variáveis).
-// - Ordem de decisão: preferência salva → preferência do sistema → claro.
+// - O escuro é o padrão (:root em tokens.css); o claro aplica data-theme="light" no <html>.
+// - Ordem de decisão: preferência salva → preferência do sistema → escuro.
 // - O mesmo cálculo roda antes em public/theme-init.js para evitar o "piscar".
 import { useCallback, useEffect, useState } from 'react';
 
 // Precisa ser a mesma chave usada em public/theme-init.js
 const STORAGE_KEY = 'kore-theme';
-const DARK_QUERY = '(prefers-color-scheme: dark)';
+const LIGHT_QUERY = '(prefers-color-scheme: light)';
 
 function readSavedTheme() {
   try {
@@ -18,7 +18,8 @@ function readSavedTheme() {
 }
 
 function getSystemTheme() {
-  return window.matchMedia(DARK_QUERY).matches ? 'dark' : 'light';
+  // Sem preferência declarada pelo sistema, fica no escuro
+  return window.matchMedia(LIGHT_QUERY).matches ? 'light' : 'dark';
 }
 
 function getInitialTheme() {
@@ -30,8 +31,8 @@ export function useTheme() {
 
   // Sincroniza o atributo do <html> sempre que o tema muda
   useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
+    if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
     } else {
       document.documentElement.removeAttribute('data-theme');
     }
@@ -39,9 +40,9 @@ export function useTheme() {
 
   // Enquanto o usuário não escolher um tema, acompanha mudanças do sistema
   useEffect(() => {
-    const media = window.matchMedia(DARK_QUERY);
+    const media = window.matchMedia(LIGHT_QUERY);
     function handleChange(event) {
-      if (!readSavedTheme()) setTheme(event.matches ? 'dark' : 'light');
+      if (!readSavedTheme()) setTheme(event.matches ? 'light' : 'dark');
     }
     media.addEventListener('change', handleChange);
     return () => media.removeEventListener('change', handleChange);
