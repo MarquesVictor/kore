@@ -21,8 +21,7 @@ export function useRevealItems(
       return whenReady(contextSafe, {
         full: (ctx, safe) => {
           // Quem anima ao carregar entra junto com o hero; o resto espera a abertura acabar
-          const wait = onLoad ? 0 : afterIntro();
-          const play = () => fadeIn(items, { x, y, stagger, duration, delay: delay + wait });
+          const play = () => fadeIn(items, { x, y, stagger, duration, delay: delay + (onLoad ? 0 : afterIntro()) });
           onEnter(trigger ? q(trigger)[0] : ref.current, safe(play), onLoad);
         },
         reduced: () => {

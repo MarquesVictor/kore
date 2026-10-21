@@ -1,11 +1,11 @@
-/* Linha de módulo: intro à esquerda, funcionalidades à direita; quebra quando não cabe. */
+/* Linha de módulo: intro à esquerda, funcionalidades à direita; quebra quando não cabe.
+   A hairline do topo vem da classe .hairline (desenha ao entrar na tela). */
 
 .module-row {
   display: flex;
   flex-wrap: wrap;
   gap: 32px 64px;
   padding: 56px 0;
-  border-top: 1px solid var(--line-active);
 }
 
 /* A cor do pilar só aparece no quadradinho e no rótulo */
@@ -85,6 +85,14 @@
   color: var(--text-dim);
   font-size: 13px;
   line-height: 1.6; /* mesma altura de linha da referência (~21px) */
+}
+
+/* Estado inicial da entrada (hooks no ModuleRow.jsx). Só com JS. */
+.js .module-row__label,
+.js .module-row__name,
+.js .module-row__tagline,
+.js .module-row__features li {
+  opacity: 0;
 }
 
 @media (max-width: 720px) {

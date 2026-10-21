@@ -14,3 +14,9 @@
     padding: 96px 0 72px;
   }
 }
+
+/* Estado inicial da entrada (hooks no Modules.jsx). Só com JS. */
+.js .modules .display,
+.js .modules .section-intro__text {
+  opacity: 0;
+}

@@ -1,11 +1,19 @@
 // Seção "Módulos": cabeçalho editorial + uma linha por módulo (dados em src/data/modules.js).
+// Ao entrar na tela, o título revela por linha e o texto ao lado entra em seguida.
+import { useRef } from 'react';
 import { modules } from '../../data/modules.js';
+import { useRevealItems } from '../../animations/useRevealItems.js';
+import { useRevealLines } from '../../animations/useRevealLines.js';
 import ModuleRow from '../ModuleRow/ModuleRow.jsx';
 import './Modules.css';
 
 export default function Modules() {
+  const sectionRef = useRef(null);
+  useRevealLines(sectionRef, { target: '.display' });
+  useRevealItems(sectionRef, { targets: '.section-intro__text', delay: 0.2 });
+
   return (
-    <section className="modules" id="modulos" aria-labelledby="modulos-title">
+    <section ref={sectionRef} className="modules" id="modulos" aria-labelledby="modulos-title">
       <div className="wrap">
         <div className="section-intro">
           <h2 id="modulos-title" className="display">
