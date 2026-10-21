@@ -70,8 +70,9 @@ orientação marcada com `[A PREENCHER]`, não texto jurídico. Para publicar a 
 | Textos dos módulos e funcionalidades | `src/data/modules.js` |
 | Passos do "Como funciona" | `src/data/steps.js` |
 | Planos e preços | `src/data/plans.js` |
-| Eventos do ticker | `src/data/tickerEvents.js` |
-| Cores, fontes, raio e sombras (temas claro e escuro) | `src/styles/tokens.css` |
+| Números do hero | `src/data/hero.js` |
+| Eventos da faixa "Operação ao vivo" | `src/data/operationLog.js` |
+| Cores, fontes, espaços e raios (escuro é o padrão; claro via `data-theme="light"`) | `src/styles/tokens.css` — os tokens oficiais vêm de `docs/design/tokens.css` |
 | Textos do hero, CTA e rodapé | no próprio componente em `src/components/` |
 | Título, descrição e Open Graph | `index.html` |
 | Imagem de compartilhamento | `public/og-image.png` (fonte editável: `public/og-image.svg`) |
@@ -110,8 +111,9 @@ src/main.jsx       ponto de entrada da home: importa os estilos globais e monta 
 src/entries/       pontos de entrada das páginas de Privacidade e Termos
 src/App.jsx        ordem das seções da página
 src/config.js      URLs vindas do .env
-src/styles/        tokens (cores/tema), base (reset/tipografia) e utilitários (.btn, .eyebrow…)
-src/data/          conteúdo editável (módulos, passos, planos, ticker, textos legais)
-src/hooks/         useTheme (tema claro/escuro) e useInView (animação de entrada)
+src/styles/        tokens (cores/tema), base (reset/tipografia) e utilitários (.label, .display, .section-intro)
+src/data/          conteúdo editável (hero, operação ao vivo, módulos, passos, planos, textos legais)
+src/hooks/         useTheme (tema escuro/claro)
 src/components/    um componente por pasta, com .jsx e .css lado a lado
+docs/design/       referência visual aprovada (Editorial ousado) e tokens oficiais do DS
 ```
