@@ -1,20 +1,10 @@
 // Ponto de entrada da página /privacidade/ (privacidade/index.html).
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-
 import '../styles/tokens.css';
 import '../styles/base.css';
 import '../styles/utilities.css';
 
+import { mount } from '../mount.jsx';
 import LegalPage from '../components/LegalPage/LegalPage.jsx';
 import { privacy } from '../data/legal/privacy.js';
 
-// Avisa o CSS que o JS carregou: só então os elementos animados começam escondidos
-// (ver .js em utilities.css). Sem JS, o site aparece normal.
-document.documentElement.classList.add('js');
-
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <LegalPage doc={privacy} />
-  </StrictMode>
-);
+mount(<LegalPage doc={privacy} />);

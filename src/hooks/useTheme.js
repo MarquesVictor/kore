@@ -1,8 +1,12 @@
 // Hook de tema claro/escuro.
 // - O escuro é o padrão (:root em tokens.css); o claro aplica data-theme="light" no <html>.
 // - Ordem de decisão: preferência salva → preferência do sistema → escuro.
-// - O mesmo cálculo roda antes em public/theme-init.js para evitar o "piscar".
-import { useCallback, useEffect, useState } from 'react';
+// - Quem decide o tema inicial é public/theme-init.js, antes do primeiro paint.
+//   Este hook só LÊ o atributo do <html> (fonte da verdade) e o altera no clique.
+// - O HTML é pré-renderizado no build sem saber o tema do visitante: por isso o
+//   servidor assume "dark" e, logo depois do hydrate, o React lê o tema real
+//   (useSyncExternalStore faz essa troca sem erro de hydration).
+import { useCallback, useEffect, useSyncExternalStore } from 'react';
 
 // Precisa ser a mesma chave usada em public/theme-init.js
 const STORAGE_KEY = 'kore-theme';
@@ -17,32 +21,38 @@ function readSavedTheme() {
   }
 }
 
-function getSystemTheme() {
-  // Sem preferência declarada pelo sistema, fica no escuro
-  return window.matchMedia(LIGHT_QUERY).matches ? 'light' : 'dark';
+function applyTheme(theme) {
+  if (theme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
 }
 
-function getInitialTheme() {
-  return readSavedTheme() ?? getSystemTheme();
+// ---------- Leitura do atributo do <html> ----------
+function getTheme() {
+  return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+}
+
+function getServerTheme() {
+  return 'dark';
+}
+
+// Avisa o React sempre que o atributo muda (inclusive por outro botão de tema)
+function subscribe(onChange) {
+  const observer = new MutationObserver(onChange);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  return () => observer.disconnect();
 }
 
 export function useTheme() {
-  const [theme, setTheme] = useState(getInitialTheme);
-
-  // Sincroniza o atributo do <html> sempre que o tema muda
-  useEffect(() => {
-    if (theme === 'light') {
-      document.documentElement.setAttribute('data-theme', 'light');
-    } else {
-      document.documentElement.removeAttribute('data-theme');
-    }
-  }, [theme]);
+  const theme = useSyncExternalStore(subscribe, getTheme, getServerTheme);
 
   // Enquanto o usuário não escolher um tema, acompanha mudanças do sistema
   useEffect(() => {
     const media = window.matchMedia(LIGHT_QUERY);
     function handleChange(event) {
-      if (!readSavedTheme()) setTheme(event.matches ? 'light' : 'dark');
+      if (!readSavedTheme()) applyTheme(event.matches ? 'light' : 'dark');
     }
     media.addEventListener('change', handleChange);
     return () => media.removeEventListener('change', handleChange);
@@ -51,7 +61,7 @@ export function useTheme() {
   // Alterna e salva a escolha para as próximas visitas
   const toggleTheme = useCallback(() => {
     const next = theme === 'dark' ? 'light' : 'dark';
-    setTheme(next);
+    applyTheme(next);
     try {
       localStorage.setItem(STORAGE_KEY, next);
     } catch {

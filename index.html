@@ -47,6 +47,20 @@
     <!-- Aplica o tema salvo antes do React carregar, evitando o "piscar" do tema errado.
          Fica em public/ e é carregado de forma síncrona de propósito. -->
     <script src="/theme-init.js"></script>
+
+    <!-- Animações (src/animations/): a classe .js liga os estados iniciais escondidos do CSS.
+         Precisa ser síncrona aqui no <head>: o HTML já vem pré-renderizado e, se a classe
+         entrasse só no main.jsx, o conteúdo apareceria, sumiria e depois animaria.
+         Rede de segurança: se o JS do site não rodar em 3s (rede ruim, erro, bloqueio),
+         a classe sai e tudo aparece sem animação. O main.jsx marca .js-ready quando roda. -->
+    <script>
+      document.documentElement.classList.add('js');
+      setTimeout(function () {
+        if (!document.documentElement.classList.contains('js-ready')) {
+          document.documentElement.classList.remove('js');
+        }
+      }, 3000);
+    </script>
   </head>
   <body>
     <div id="root"></div>

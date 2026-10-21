@@ -24,14 +24,20 @@ const RISE = 120;
 // A quebra de linha do SplitText depende da Syne já carregada. fonts.load() força o
 // download da Syne 800 e depois fonts.ready espera o resto. O timeout garante que,
 // se a fonte falhar, o conteúdo não fica escondido para sempre.
-const fontsReady = Promise.race([
-  document.fonts
-    ? document.fonts.load('800 1em Syne').then(() => document.fonts.ready)
-    : Promise.resolve(),
-  new Promise((resolve) => setTimeout(resolve, 2000)),
-])
-  .catch(() => {})
-  .then(() => ScrollTrigger.refresh()); // posições recalculadas com a fonte certa
+// Criado só na primeira chamada: no build (pré-renderização em Node) não existe document.
+let fontsReady;
+
+function waitForFonts() {
+  fontsReady ??= Promise.race([
+    document.fonts
+      ? document.fonts.load('800 1em Syne').then(() => document.fonts.ready)
+      : Promise.resolve(),
+    new Promise((resolve) => setTimeout(resolve, 2000)),
+  ])
+    .catch(() => {})
+    .then(() => ScrollTrigger.refresh()); // posições recalculadas com a fonte certa
+  return fontsReady;
+}
 
 // ---------- Base de todos os hooks ----------
 const MOTION_OK = '(prefers-reduced-motion: no-preference)';
@@ -47,8 +53,13 @@ const MOTION_REDUCED = '(prefers-reduced-motion: reduce)';
  * Retorne o resultado dentro do useGSAP (é a limpeza que cancela a espera das fontes).
  */
 export function whenReady(contextSafe, { full, reduced }) {
+  // Sem a classe .js (adicionada no <head> do index.html), os estados iniciais do CSS
+  // não valem e o conteúdo já está visível: não anima. Acontece quando o JS chega tão
+  // tarde que a rede de segurança do <head> já tirou a classe.
+  if (!document.documentElement.classList.contains('js')) return undefined;
+
   let active = true;
-  fontsReady.then(
+  waitForFonts().then(
     contextSafe(() => {
       if (!active) return; // o componente desmontou antes das fontes (StrictMode faz isso)
       const mm = gsap.matchMedia();

@@ -1,6 +1,7 @@
 // Configuração do Vite.
 // - O plugin do React habilita JSX e o Fast Refresh (recarregamento instantâneo no dev).
 // - O site tem 3 páginas HTML (home, privacidade e termos): todas entram no build.
+// - O build também pré-renderiza as 3 páginas em HTML (ver scripts/prerender.js).
 // - O plugin "site-url" troca %SITE_URL% nos HTML pelo domínio do .env,
 //   porque Open Graph e canonical precisam de URL absoluta.
 import { defineConfig, loadEnv } from 'vite';
@@ -41,6 +42,11 @@ export default defineConfig(({ command, mode }) => {
         },
       },
     ],
+    // Pré-renderização (src/entry-server.jsx → scripts/prerender.js): o GSAP entra no
+    // bundle de servidor em vez de ser importado pelo Node, que não lê os módulos ESM dele.
+    ssr: {
+      noExternal: ['gsap', '@gsap/react'],
+    },
     build: {
       rollupOptions: {
         input: {

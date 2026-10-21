@@ -31,7 +31,12 @@ export default function Footer() {
 
         <ContactLinks />
 
-        <p className="footer__copy">© {year} KORE</p>
+        {/* O HTML é pré-renderizado no build: na virada do ano, o ano do build pode diferir
+            do ano do visitante até o próximo deploy. suppressHydrationWarning evita que essa
+            diferença faça o React descartar o HTML pré-renderizado. */}
+        <p className="footer__copy" suppressHydrationWarning>
+          © {year} KORE
+        </p>
       </div>
     </footer>
   );

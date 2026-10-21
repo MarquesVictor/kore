@@ -1,6 +1,7 @@
 # KORE — site institucional
 
-Landing page da KORE (Frota, Logística e Segurança do Trabalho) em **React 18 + Vite**, com CSS puro e sem dependências além de `react` e `react-dom`.
+Landing page da KORE (Frota, Logística e Segurança do Trabalho) em **React 18 + Vite**, com CSS puro.
+Dependências: `react`, `react-dom` e, só na home, `gsap` + `@gsap/react` para as animações.
 
 ## Requisitos
 
@@ -12,7 +13,7 @@ Landing page da KORE (Frota, Logística e Segurança do Trabalho) em **React 18 
 ```bash
 npm install       # instala as dependências
 npm run dev       # servidor local em http://localhost:5173
-npm run build     # gera o build de produção em dist/
+npm run build     # gera o build de produção em dist/ (com as páginas pré-renderizadas)
 npm run preview   # serve o build de dist/ localmente para conferir
 ```
 
@@ -80,6 +81,31 @@ orientação marcada com `[A PREENCHER]`, não texto jurídico. Para publicar a 
 
 Regra do projeto: **nenhuma cor literal fora de `tokens.css`** — os componentes usam sempre `var(--...)`.
 
+## Pré-renderização
+
+O `npm run build` faz três passos:
+
+1. `vite build`: gera o site em `dist/`, como sempre;
+2. `vite build --ssr src/entry-server.jsx`: gera um bundle que renderiza as páginas em Node;
+3. `node scripts/prerender.js`: coloca o HTML de cada página dentro do `#root` em `dist/`.
+
+Assim o conteúdo já vem no HTML: o site aparece com JS desligado, buscadores leem o texto
+direto e links com âncora (`/#planos`) rolam até a seção ao abrir. No navegador, `src/mount.jsx`
+"hidrata" esse HTML. No `npm run dev` não há pré-renderização: a página é montada do zero.
+
+Ao criar uma página nova, registre-a também em `src/entry-server.jsx`.
+Nada pode ler `window`, `document` ou `localStorage` durante o render (só dentro de efeitos).
+
+## Animações
+
+GSAP (com ScrollTrigger e SplitText), só na home. A lógica fica em hooks em `src/animations/`,
+os componentes só chamam o hook com uma `ref`, e os estados iniciais ficam no `.css` de cada
+componente, sob a classe `.js`.
+
+- A classe `.js` entra por um script no `<head>` do `index.html`. Se o JS do site não rodar em
+  3s, ela sai e tudo aparece sem animação.
+- Com "reduzir movimento" no sistema, nada se move: tudo aparece com um fade de 0.2s.
+
 ## Deploy
 
 O build é um site estático (pasta `dist/`).
@@ -109,6 +135,10 @@ privacidade/       HTML da página /privacidade/
 termos/            HTML da página /termos/
 src/main.jsx       ponto de entrada da home: importa os estilos globais e monta o App
 src/entries/       pontos de entrada das páginas de Privacidade e Termos
+src/mount.jsx      monta a página: hidrata o HTML pré-renderizado (ou renderiza do zero no dev)
+src/entry-server.jsx  renderiza as páginas em HTML no build (usado por scripts/prerender.js)
+scripts/           prerender.js: injeta o HTML pré-renderizado em dist/
+src/animations/    GSAP: registro dos plugins, tokens de movimento e hooks de animação
 src/App.jsx        ordem das seções da página
 src/config.js      URLs vindas do .env
 src/styles/        tokens (cores/tema), base (reset/tipografia) e utilitários (.label, .display, .section-intro)
