@@ -19,6 +19,7 @@ fail() { printf '\n✖ %s\n' "$1" >&2; exit 1; }
 
 # ---------- Conferências antes de começar ----------
 [ -f .env ] || fail ".env não encontrado. Ele não vem pelo git: copie o .env.example e preencha."
+grep -qE '^VITE_SITE_URL=.+' .env || fail "VITE_SITE_URL vazio ou ausente no .env (copie as variáveis VITE_ do .env.example)."
 
 if [ -z "${DEPLOY_DIR:-}" ]; then
   DEPLOY_DIR=$(grep -E '^DEPLOY_DIR=' .env | tail -1 | cut -d= -f2- | tr -d "\"'" || true)
