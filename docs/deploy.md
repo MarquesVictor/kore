@@ -6,7 +6,7 @@ só entrega esses arquivos. Não roda Node no ar. O Node só é usado no servido
 ```
 sua máquina                         servidor
 ───────────                         ──────────────────────────────────────────────
-testes + git push  ──────────────►  clone do repositório (ex.: /srv/kore-site)
+testes + git push  ──► GitHub ──►   clone do repositório (ex.: /srv/kore-site)
                                       └─ npm run deploy
                                            git pull → npm ci → lint e testes → build
                                            └─ publica dist/ ──► pasta do Apache (DEPLOY_DIR)
@@ -17,7 +17,7 @@ Dia a dia, depois de configurado:
 ```bash
 # na sua máquina
 npm run lint && npm test && npm run test:e2e
-git push <remoto> master
+git push
 
 # no servidor
 cd /srv/kore-site && npm run deploy
@@ -59,39 +59,31 @@ cd /srv/kore-site && npm run deploy
 
 ---
 
-## 1. De onde o servidor puxa o código (uma vez)
+## 1. Repositório
 
-O servidor precisa de um repositório Git de onde fazer `git pull`. Hoje o projeto não tem
-nenhum remoto configurado. Escolha **uma** das opções:
+O código fica no GitHub: [github.com/MarquesVictor/kore](https://github.com/MarquesVictor/kore)
+(remoto `origin`, branch `main`). O servidor faz `git pull` dele.
 
-### Opção A: repositório privado (GitHub, GitLab…)
-
-```bash
-# na sua máquina
-git remote add origin <url-do-repositório-privado>
-git push -u origin master
-```
-
-O servidor precisa de acesso de leitura a ele (chave SSH de deploy, por exemplo).
-
-### Opção B: repositório no próprio servidor (sem serviço externo)
+Se o repositório for **privado**, o servidor precisa de acesso de leitura. O mais simples é uma
+*deploy key*:
 
 ```bash
 # no servidor
-git init --bare /srv/git/kore-site.git
-
-# na sua máquina
-git remote add servidor ssh://<usuario>@<servidor>/srv/git/kore-site.git
-git push -u servidor master
+ssh-keygen -t ed25519 -f ~/.ssh/kore_deploy -N ""
+cat ~/.ssh/kore_deploy.pub
 ```
+
+Cole a chave pública em *GitHub → repositório → Settings → Deploy keys → Add deploy key*
+(só leitura) e clone com `git@github.com:MarquesVictor/kore.git`. Se o repositório for público,
+dá para clonar pela URL `https://` direto.
 
 ---
 
 ## 2. Preparar o servidor (uma vez)
 
 ```bash
-# clone (use a URL da opção escolhida no passo 1)
-git clone <url-ou-/srv/git/kore-site.git> /srv/kore-site
+# clone
+git clone https://github.com/MarquesVictor/kore.git /srv/kore-site   # ou git@github.com:… (repositório privado)
 cd /srv/kore-site
 
 # variáveis: o .env NÃO vem pelo git (está no .gitignore)
@@ -129,7 +121,7 @@ Mudou uma variável? Rode o deploy de novo.
 npm run lint        # ESLint + Stylelint
 npm test            # dados, pré-renderização e hydration (~1s)
 npm run test:e2e    # navegador, contra o build de produção (~20s)
-git push <remoto> master
+git push
 ```
 
 Os testes de navegador (`test:e2e`) rodam só na sua máquina, porque precisam do Chromium.
@@ -197,7 +189,7 @@ cd /srv/kore-site
 git log --oneline            # escolha o commit bom
 git checkout <commit>
 SKIP_PULL=1 npm run deploy   # publica essa versão sem puxar código novo
-git checkout master          # volta a acompanhar a master para o próximo deploy
+git checkout main            # volta a acompanhar a main para o próximo deploy
 ```
 
 ---
@@ -223,6 +215,6 @@ Estas pendências são conhecidas. O site funciona com elas, mas decida conscien
 | `/privacidade/` dá 403 ou 404 | `DirectoryIndex` sem efeito, ou permissão de leitura | confira o passo 0 e as permissões da pasta |
 | `rsync: Permission denied` no deploy | usuário do deploy sem escrita no `DEPLOY_DIR` | ajuste o dono ou o grupo da pasta |
 | `fatal: Not possible to fast-forward` | o clone do servidor tem commits ou alterações locais | não edite arquivos no servidor; `git status` mostra o que mudou |
-| `There is no tracking information` no `git pull` | clone sem branch remota associada | `git branch -u origin/master` (ou `servidor/master`) |
+| `There is no tracking information` no `git pull` | clone sem branch remota associada | `git branch -u origin/main` |
 | `npm ci` ou `npm test` falham com erro de sintaxe ou engine | Node antigo no servidor | Node 20.19+ (passo 0) |
 | Mudou uma variável, mas o site não | as `VITE_` são embutidas no build | rode `npm run deploy` de novo |
