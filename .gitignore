@@ -1,8 +1,29 @@
+# ---------- Variáveis de ambiente ----------
+# Nunca vão para o Git: cada máquina (e o servidor) tem o seu .env.
+# Só o modelo, sem valores reais, é versionado.
+.env
+.env.*
+!.env.example
+
+# ---------- Dependências e builds ----------
 node_modules
 dist
-.env
-.env.local
-.DS_Store
 dist-ssr
+
+# ---------- Testes ----------
 test-results
 playwright-report
+coverage
+
+# ---------- Logs ----------
+*.log
+npm-debug.log*
+
+# ---------- Sistema e editores ----------
+.DS_Store
+.idea
+.vscode/*
+!.vscode/extensions.json
+
+# ---------- Ferramentas locais ----------
+.claude/settings.local.json
