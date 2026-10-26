@@ -18,6 +18,7 @@ npm run preview   # serve o build de dist/ localmente para conferir
 npm run lint      # ESLint (JS/JSX) + Stylelint (CSS)
 npm test          # testes rápidos (Vitest): dados, pré-renderização e hydration
 npm run test:e2e  # testes no navegador (Playwright) contra o build de produção
+npm run deploy    # só no servidor: atualiza, testa, gera o build e publica (docs/deploy.md)
 ```
 
 ## Lint e testes
@@ -130,24 +131,14 @@ componente, sob a classe `.js`.
 
 ## Deploy
 
-O build é um site estático (pasta `dist/`).
+O site vai para um **servidor próprio com Apache**. O servidor tem um clone do repositório e
+roda `npm run deploy` ([scripts/deploy.sh](scripts/deploy.sh)): `git pull` → `npm ci` → lint e
+testes → build → publica `dist/` na pasta do Apache (`DEPLOY_DIR`, no `.env` do servidor).
+Se algum passo falhar, nada é publicado.
 
-### Vercel
-
-1. Importe o repositório em [vercel.com/new](https://vercel.com/new).
-2. Framework: **Vite** (detectado automaticamente). Build: `npm run build`. Output: `dist`.
-3. Em *Settings → Environment Variables*, cadastre as variáveis do `.env`
-   (`VITE_SITE_URL`, `VITE_APP_URL`, `VITE_LOGIN_URL`, `VITE_CONTACT_WPP`).
-4. Faça o deploy.
-
-### Netlify
-
-1. Em [app.netlify.com](https://app.netlify.com), *Add new site → Import an existing project*.
-2. Build command: `npm run build`. Publish directory: `dist`.
-3. Em *Site configuration → Environment variables*, cadastre as mesmas variáveis do `.env`.
-4. Faça o deploy.
-
-> Depois de publicar, teste a prévia do link no [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) ou mandando o link para você mesmo no WhatsApp.
+O passo a passo completo está em [docs/deploy.md](docs/deploy.md): pré-requisitos do servidor,
+primeira configuração, checagem depois do deploy, como voltar uma versão e problemas comuns.
+O `public/.htaccess` vai junto no build e configura cache, compressão e o tipo das fontes no Apache.
 
 ## Estrutura
 
@@ -161,7 +152,7 @@ src/main.jsx       ponto de entrada da home: importa os estilos globais e monta 
 src/entries/       pontos de entrada das páginas de Privacidade e Termos
 src/mount.jsx      monta a página: hidrata o HTML pré-renderizado (ou renderiza do zero no dev)
 src/entry-server.jsx  renderiza as páginas em HTML no build (usado por scripts/prerender.js)
-scripts/           prerender.js: injeta o HTML pré-renderizado em dist/
+scripts/           prerender.js (injeta o HTML pré-renderizado em dist/) e deploy.sh (npm run deploy)
 src/animations/    GSAP: registro dos plugins, tokens de movimento e hooks de animação
 src/App.jsx        ordem das seções da página
 src/config.js      URLs vindas do .env
@@ -170,4 +161,5 @@ src/data/          conteúdo editável (hero, operação ao vivo, módulos, pass
 src/hooks/         useTheme (tema escuro/claro)
 src/components/    um componente por pasta, com .jsx e .css lado a lado
 docs/design/       referência visual aprovada (Editorial ousado) e tokens oficiais do DS
+docs/deploy.md     passo a passo do deploy no servidor próprio (Apache)
 ```

@@ -1,0 +1,42 @@
+# Configuração do Apache para o site KORE.
+# Fica em public/ e o build copia para a raiz de dist/, ou seja, vai junto em cada deploy.
+# Precisa de "AllowOverride All" (ou ao menos FileInfo, Indexes e Options) na pasta do
+# site; sem isso, o Apache ignora este arquivo. Cada bloco só vale se o módulo estiver
+# ativo, então o site nunca quebra por falta de módulo, só perde o ajuste.
+
+# /privacidade/ e /termos/ são pastas com index.html
+DirectoryIndex index.html
+
+# Tipos que alguns Apaches não conhecem
+AddType font/woff2 .woff2
+AddType image/svg+xml .svg
+AddDefaultCharset utf-8
+
+# Não lista o conteúdo das pastas
+Options -Indexes
+
+# ---------- Compressão (woff2 e png já vêm comprimidos) ----------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript image/svg+xml text/plain application/json
+</IfModule>
+
+# ---------- Cache ----------
+<IfModule mod_headers.c>
+  # Padrão: o navegador confere com o servidor se há versão nova (HTML, theme-init.js,
+  # imagens). Assim, um deploy aparece na hora para todo mundo.
+  Header set Cache-Control "no-cache"
+
+  # JS e CSS gerados pelo Vite têm hash no nome: um arquivo nunca muda de conteúdo,
+  # então pode ficar em cache por 1 ano.
+  <If "%{REQUEST_URI} =~ m#^/assets/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+
+  # Fontes não têm hash no nome: 30 dias. Se trocar uma fonte, mude o nome do arquivo.
+  <If "%{REQUEST_URI} =~ m#^/fonts/#">
+    Header set Cache-Control "public, max-age=2592000"
+  </If>
+
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

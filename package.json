@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint . && stylelint \"src/**/*.css\"",
     "test": "vitest run",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "deploy": "bash scripts/deploy.sh"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
